@@ -1,0 +1,205 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+
+//navbar
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: blue;
+  background-color: $navbar-backgroundColor;
+  color: $navbar-first-color;
+  justify-content: space-around;
+  padding: 18px 10px;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+
+  .navbar-title {
+    line-height: 40px;
+    font-size: 1.3rem; 
+  }
+
+  .navbar-nav {
+    list-style-type: none;
+    color: $navbar-second-color;
+    display: flex;
+
+    :hover {
+      color: $navbar-hover-color;
+      cursor: pointer;
+    }
+
+    // :first-child {
+    //   ::after {
+    //     content: "";
+    //     margin-left: .255em;
+    //     vertical-align: .255em;
+    //     display: inline-block;
+    //     border-top: .3em solid;
+    //     border-right: .3em solid transparent;
+    //     border-bottom: 0;
+    //     border-left: .3em solid transparent;
+    //   }
+    // }
+
+    .dropdown::after {
+      content: "";
+      margin-left: .255em;
+      vertical-align: .255em;
+      display: inline-block;
+      border-top: .3em solid;
+      border-right: .3em solid transparent;
+      border-bottom: 0;
+      border-left: .3em solid transparent;
+    }
+
+    .dropdown.show {
+      color: white;
+    }
+
+    li.show {
+      color: white;
+    }
+
+    li {
+      margin: 0 10px;
+      line-height: 40px;
+
+      .dropdown-menu {
+        position: absolute;
+        transform: translateX(-10%);
+        display: none;
+      }
+    
+      
+      .dropdown-menu.show {
+        display: block;
+        float: none;
+        background-color: $navbar-first-color;
+        color: black;
+        border: 0.3px solid black;
+        border-radius: 5px;
+        z-index: 4;
+    
+        a {
+          display: block;
+          padding: .25rem 1.5rem;
+        }
+
+        :hover {
+          color: black;
+          background-color: #f8f9fa;
+          border-radius: 5px;
+        }
+      }
+
+
+      // ::after {
+      //   content: "";
+      //   margin-left: .255em;
+      //   vertical-align: .255em;
+      //   display: inline-block;
+      //   border-top: .3em solid;
+      //   border-right: .3em solid transparent;
+      //   border-bottom: 0;
+      //   border-left: .3em solid transparent;
+      // }
+
+      // :first-child {
+      //   // ::after {
+      //   //   content: "";
+      //   //   margin-left: .255em;
+      //   //   vertical-align: .255em;
+      //   //   display: inline-block;
+      //   //   border-top: .3em solid;
+      //   //   border-right: .3em solid transparent;
+      //   //   border-bottom: 0;
+      //   //   border-left: .3em solid transparent;
+      //   // }
+      // }
+
+      // .dropdown-menu {
+      //   position: absolute;
+      //   display: none;
+      // }
+
+      // .dropdown-menu, .show {
+      //   display: block;
+      //   float: none;
+      //   background-color: $navbar-first-color;
+      //   color: black;
+      //   border: 0.3px solid black;
+      //   border-radius: 5px;
+
+      //   a {
+      //     display: block;
+      //     width: 100%;
+      //     padding: .25rem 1.5rem;
+      //   }
+      // }
+
+    }
+  }
+
+  // .dropdown-menu {
+  //   position: absolute;
+  //   display: none;
+  // }
+
+  // .dropdown-menu, .show {
+  //   display: block;
+  //   float: none;
+  //   background-color: $navbar-first-color;
+  //   color: black;
+  //   border: 0.3px solid black;
+  //   border-radius: 5px;
+
+  //   a {
+  //     display: block;
+  //     width: 100%;
+  //     padding: .25rem 1.5rem;
+  //   }
+  // }
+
+
+
+  .navbar-buttons {
+    margin-right: 10px;
+    width: 200px;
+    display: flex;
+    border-radius: 5px;
+    overflow: hidden;
+
+    button {
+      flex-grow: 1;
+      color: white;
+      background-color: $navbar-btn-background;
+      border: none;
+      height: 100%;
+
+      :hover {
+        cursor: pointer;
+        background-color: $navbar-btn-hover;
+      }
+
+      i {
+        border-color: $navbar-btn-background;
+        width: 100%;
+        line-height: 40px;
+      }
+    }
+
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-hamburger {
+    display: none;
+  }
+}
