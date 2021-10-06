@@ -1,19 +1,34 @@
-const navbarLinksButtonListener = () => {
+const navbarButtonListener = () => {
   const dropdownMenu = document.querySelector('.dropdown-menu');
   const navbarLinksArray = [...document.querySelectorAll('.navbar-nav li')];
+
   for(let i=0; i<navbarLinksArray.length; i++) {
     navbarLinksArray[i].addEventListener('click', () => {
       navbarLinksArray[i].classList.toggle('show');
-      i == 0 ? dropdownMenu.classList.toggle('show') : null;   
+      i == 0 ? dropdownMenu.classList.toggle('show') : null;  
       for(let j=0; j<navbarLinksArray.length; j++) {
         if(j!=i) {
           navbarLinksArray[j].classList.remove('show');
           j == 0 ? dropdownMenu.classList.remove('show') : null;  
         }
-        
       }
     });
   }
+
+  document.querySelector('.navbar-hamburger').addEventListener('click', () => {
+    document.querySelector('.navbar-nav').classList.toggle('active');
+    document.querySelector('.navbar-buttons').classList.toggle('active');
+
+    dropdownMenu.classList.remove('show');
+
+    for(navbarLink of navbarLinksArray) {
+      navbarLink.classList.remove('show');
+    }
+  });
 }
 
-navbarLinksButtonListener()
+const sliderHandler = () => {
+  
+}
+
+navbarButtonListener()
