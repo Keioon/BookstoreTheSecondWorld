@@ -1,9 +1,6 @@
 const navbarButtonListener = () => {
   const dropdownMenu = document.querySelector('.dropdown-menu');
   const dropdown = document.querySelector('.dropdown');
-  // const hamburger = document.querySelector('.navbar-hamburger');
-  const navbarLinksArray = [...document.querySelectorAll('.navbar-nav li')];
-  console.log(navbarLinksArray);
 
   const showRemover = (list) => {
     for(li of list) {
@@ -14,23 +11,27 @@ const navbarButtonListener = () => {
   document.body.addEventListener('click', function(e){
     if(!e.target.classList.contains('menu')){
       const showedList = [...document.querySelectorAll('.show')];
+      //console.log(e.target);
       showRemover(showedList);
-      console.log(e.target);
     } else {
+      //console.log(e.target);
       const showedList = [...document.querySelectorAll('.show')];
       if(e.target.classList.contains('navbar-links') || e.target.classList.contains('dropdown')) {
         dropdown.classList.toggle('show');
         dropdownMenu.classList.toggle('show');
         showRemover(showedList);
       } else if(e.target.classList.contains('navbar-link')) {
-        console.log(e.target);
         e.target.classList.toggle('show');
         showRemover(showedList);
-      } else if(e.target.classList.contains('fas') || e.target.classList.contains('hamburger')) {
-        console.log(e.target);
+      } else if(e.target.classList.contains('hamburger')) {
         document.querySelector('.navbar-nav').classList.toggle('active');
         document.querySelector('.navbar-buttons').classList.toggle('active');
-
+        showRemover(showedList);
+      } else if(e.target.classList.contains('fa-shopping-cart')) {
+        e.target.parentNode.classList.toggle('show');
+        showRemover(showedList);
+      } else if(e.target.classList.contains('fa-user-alt')) {
+        e.target.parentNode.classList.toggle('show');
         showRemover(showedList);
       }
     
@@ -39,52 +40,87 @@ const navbarButtonListener = () => {
 }
 
 const sliderHandler = () => {
-  let currentSlide = null;
-  let prevSlide = null;
-  let nextSlide = null;
+  let current = null;
+  let prev = null;
+  let next = null;
+  let didSlideEnd = true;
   const leftBtn = document.querySelector('.left');
   const rightBtn = document.querySelector('.right');
-  const slideList = [...document.querySelectorAll('.slider-item')];
-
-  const currentSlideCheck = () => {
-    slideList.forEach((elem, id) => {
-      if(elem.classList.contains('current')) {
-        currentSlide = id;
-        prevSlide = currentSlide - 1;
-        nextSlide = currentSlide + 1
-      }
-      if(prevSlide < 0) {
-        prevSlide = slideList.length -1;
-      } else if(nextSlide > slideList.length -1) {
-        nextSlide = 0;
-      }
-    })
-  }
-
 
   leftBtn.addEventListener('click', () => {
-    currentSlideCheck();
-    console.log(currentSlide);
+    if(didSlideEnd){
+      didSlideEnd = false;
+      const slideList = [...document.querySelectorAll('.slider-item')];
+      slideList.forEach((elem, id) => {
+        if(elem.classList.contains('current')) {
+          current = id;
+        }
+      })
+      
+      currentSlideCheck(slideList.length, current);
 
-    slideList.forEach(slide => slide.classList.remove('next'));
+      slideList[current].classList.add('next');
+      slideList[prev].classList.add('current');
+      slideList[next].classList.remove('next');
+      slideList[next].classList.add('hide');
+      slideList[next].classList.add('prev');
+      slideList[prev].classList.remove('prev');
 
-    slideList[currentSlide].classList.add('next');
-    slideList[currentSlide].classList.remove('current');
-    slideList[prevSlide].classList.add('current');
-    console.log(leftBtn);
+      setTimeout( function() {
+        slideList[current].classList.remove('current');
+        slideList[next].classList.remove('hide');
+        didSlideEnd = true;
+      }, 600);
+    } else {
+      console.log('You must wait until animation end');
+    }
+    
   })
 
   rightBtn.addEventListener('click', () => {
-    currentSlideCheck();
-    console.log(currentSlide);
-    
-    slideList.forEach(slide => slide.classList.remove('prevHide'));
-    slideList[currentSlide].classList.add('prevHide');
-    slideList[currentSlide].classList.remove('current');
-    slideList[nextSlide].classList.add('current');
-    console.log(rightBtn);
+    if(didSlideEnd){
+      didSlideEnd = false;
+      const slideList = [...document.querySelectorAll('.slider-item')];
+      didSlideEnd = false;
+      console.log(didSlideEnd);
+      slideList.forEach((elem, id) => {
+        if(elem.classList.contains('current')) {
+          current = id;
+        }
+      })
+
+      currentSlideCheck(slideList.length, current);
+
+      slideList[current].classList.add('prev');
+      slideList[prev].classList.remove('prev');
+      slideList[prev].classList.add('hide');
+      slideList[prev].classList.add('next');
+      slideList[next].classList.add('current');
+      slideList[next].classList.remove('next');
+
+      setTimeout( function() {
+        slideList[current].classList.remove('current');
+        slideList[prev].classList.remove('hide');
+        didSlideEnd = true;
+      }, 600);
+    }
+    else {
+      console.log('You must wait until animation end');
+    }
   })
 
+  currentSlideCheck = (slideAmount, current) => {
+    if(current == slideAmount - 1) {
+      prev = slideAmount - 2;
+      next = 0;
+    } else if(current == 0) {
+      prev = slideAmount - 1;
+      next = current + 1;
+    } else {
+      next = current + 1;
+      prev = current - 1;
+    }
+  }
 }
 
 sliderHandler()
