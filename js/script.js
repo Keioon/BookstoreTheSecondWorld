@@ -47,6 +47,47 @@ const sliderHandler = () => {
   const leftBtn = document.querySelector('.left');
   const rightBtn = document.querySelector('.right');
 
+  currentSlideCheck = (slideAmount, current) => {
+    if(current == slideAmount - 1) {
+      prev = slideAmount - 2;
+      next = 0;
+    } else if(current == 0) {
+      prev = slideAmount - 1;
+      next = current + 1;
+    } else {
+      next = current + 1;
+      prev = current - 1;
+    }
+  }
+
+  changeSlideOnNext = () => {
+    didSlideEnd = false;
+    const slideList = [...document.querySelectorAll('.slider-item')];
+    slideList.forEach((elem, id) => {
+      if(elem.classList.contains('current')) {
+        current = id;
+      }
+    })
+
+    currentSlideCheck(slideList.length, current);
+
+    slideList[current].classList.add('prev');
+    slideList[prev].classList.remove('prev');
+    slideList[prev].classList.add('hide');
+    slideList[prev].classList.add('next');
+    slideList[next].classList.add('current');
+    slideList[next].classList.remove('next');
+
+    setTimeout( function() {
+      slideList[current].classList.remove('current');
+      slideList[prev].classList.remove('hide');
+      didSlideEnd = true;
+    }, 600);
+  }
+  
+  regularSlideChange = setInterval(changeSlideOnNext, 5000);
+
+
   leftBtn.addEventListener('click', () => {
     if(didSlideEnd){
       didSlideEnd = false;
@@ -71,56 +112,23 @@ const sliderHandler = () => {
         slideList[next].classList.remove('hide');
         didSlideEnd = true;
       }, 600);
+      clearInterval(regularSlideChange);
+      regularSlideChange = setInterval(changeSlideOnNext, 5000);
     } else {
       console.log('You must wait until animation end');
     }
-    
   })
 
   rightBtn.addEventListener('click', () => {
     if(didSlideEnd){
-      didSlideEnd = false;
-      const slideList = [...document.querySelectorAll('.slider-item')];
-      didSlideEnd = false;
-      console.log(didSlideEnd);
-      slideList.forEach((elem, id) => {
-        if(elem.classList.contains('current')) {
-          current = id;
-        }
-      })
-
-      currentSlideCheck(slideList.length, current);
-
-      slideList[current].classList.add('prev');
-      slideList[prev].classList.remove('prev');
-      slideList[prev].classList.add('hide');
-      slideList[prev].classList.add('next');
-      slideList[next].classList.add('current');
-      slideList[next].classList.remove('next');
-
-      setTimeout( function() {
-        slideList[current].classList.remove('current');
-        slideList[prev].classList.remove('hide');
-        didSlideEnd = true;
-      }, 600);
+      changeSlideOnNext();
+      clearInterval(regularSlideChange);
+      regularSlideChange = setInterval(changeSlideOnNext, 5000);
     }
     else {
       console.log('You must wait until animation end');
     }
   })
-
-  currentSlideCheck = (slideAmount, current) => {
-    if(current == slideAmount - 1) {
-      prev = slideAmount - 2;
-      next = 0;
-    } else if(current == 0) {
-      prev = slideAmount - 1;
-      next = current + 1;
-    } else {
-      next = current + 1;
-      prev = current - 1;
-    }
-  }
 }
 
 sliderHandler()
