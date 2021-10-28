@@ -5,7 +5,9 @@
 }
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  
 }
 
 //navbar
@@ -218,10 +220,10 @@ body {
 }
 
 //main-slider
-
 .main-slider {
   width: 100%;
   height: 100vh;
+  margin-bottom: 50px;
   overflow: hidden;
 
   .slider-item {
@@ -309,5 +311,299 @@ body {
       right: 5%;
     }
 
+  }
+}
+
+//products
+.products {
+  display: block;
+  margin-bottom: 50px;
+  
+  .container {
+    @include mixinContainer;
+
+    .autors {
+      padding-right: 10px;
+      width: 25%;
+      height: 400px;
+
+      h1 {
+        font-size: 30px;
+        box-sizing: border-box;
+        display: inline-block;
+        height: 10%;
+        padding: 5px;
+      }
+
+      .autors-list {
+        max-height: 90%;
+        border: 1px solid $borders-color;
+        border-radius: 5px;
+
+        li {
+          list-style-type: none;
+          padding: 15px 20px;
+          display: block;
+          border-bottom: 1px solid $borders-color;
+        }
+
+        li:hover {
+          background-color: $autors-hover-background;
+          cursor: pointer;
+        }
+
+        li:last-of-type {
+          border: none;
+        }
+      }
+    }
+
+    .books {
+      width: 75%;
+      height: 400px;
+
+      h1 {
+        height: 10%;
+        font-size: 30px;
+        box-sizing: border-box;
+        display: inline-block;
+        padding: 5px;
+      }
+
+      .books-list {
+        box-sizing: border-box;
+        width: 100%;
+        padding-bottom: 10px;
+        height: 90%;
+        overflow: hidden;
+        overflow-x: auto;
+        display: flex;
+  
+        .box {
+          height: 100%;
+          box-sizing: border-box;
+          padding: 0px 20px 0 0;
+          display: flex;
+          flex-wrap: wrap;
+
+          .card-image {
+            height: 75%;
+            width: 200px;
+            display: block;
+
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+          .text {
+            display: block;
+            width: 100%;
+            height: 25%;
+            border: 1px solid $borders-color;
+            border-radius: 0 0 5px 5px;
+  
+            h2 {
+              font-size: 20px;
+              padding: 10px 10px 0 10px;
+            }
+  
+            @include mixinButton;
+          }
+        }
+
+        .box:last-of-type {
+          padding-right: 2px;
+        }
+      }
+    }
+
+    .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+
+      .row {
+        @include mixinRow;
+
+        .second-image {
+          height: 100%;
+          flex: 0 0 50%;
+          max-width: 50%;
+          box-sizing: border-box;
+          object-fit: cover;
+          display: block;
+          // @include addButton;
+        }
+
+        .second-image:first-of-type {
+          padding-right: 15px;
+        }
+      }
+  
+      // .third-image {
+      //   box-sizing: border-box;
+      // }
+
+      img {
+        width: 100%;
+        box-sizing: border-box;
+        height: 100%;
+        border: 1px solid $borders-color;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+//support
+.support {
+  .container {
+    @include mixinContainer;
+
+    .row {
+      @include mixinRow;
+
+      .card {
+        @include mixinCard;
+
+        .col-first {
+          flex: 0 0 20%;
+
+          i {
+            font-size: 20px;
+            padding: 5px;
+          }
+        }
+
+        .col-second {
+          flex: 0 0 80%;
+
+          h3 {
+            font-size: 24px;
+            padding-bottom: 5px;
+          }
+
+          p {
+            font-size: 16px;
+            line-height: 24px;
+          }
+        }
+      }
+
+    }
+  }
+}
+
+.contact {
+  width: 100%;
+  background-color: #eff2f5;
+
+  .container {
+    @include mixinContainer;
+    padding: 30px;
+
+    .row {
+      @include mixinRow;
+
+      .card {
+        @include mixinCard;
+        flex: 1 0 33%;
+        padding: 0 50px;
+        border: none;
+        flex-wrap: wrap;
+
+        .small {
+          font-size: 10px;
+          color: gray;
+        }
+
+        h3 {
+          font-size: 28px;
+          letter-spacing: 1px;
+          flex: 0 0 100%;
+          padding-bottom: 5px;
+        }
+
+        p {
+          flex: 0 0 100%;
+          font-size: 18px;
+
+          a {
+            text-decoration: none;
+            color: #007bff;
+          }
+
+          a:hover {
+            text-decoration: underline;
+            cursor: pointer;
+            color: #0056b3;
+          }
+        }
+
+        ul {
+          @include mixinRow;
+          padding-top: 20px;
+          width: 100%;
+          flex: 0 0 100%;
+          display: flex;
+          flex-wrap: nowrap;
+
+          li {
+            list-style-type: none;
+            display: block;
+            flex: 0 0 25%;
+
+            i {
+              transition: 0.3s;
+            }
+
+            i:hover {
+              cursor: pointer;
+              transform: scale(2);
+            }
+
+            .fa-facebook-f:hover {
+              color: #0A8CF6;
+            }
+
+            .fa-twitter:hover {
+              color: #02D0EB;
+            }
+
+            .fa-youtube:hover {
+              color: red;
+            }
+          }
+        }
+
+        input {
+          margin-top: 10px; 
+        }
+        
+
+        @include mixinButton;
+        .submit-button {
+          background-color: #007bff;
+          border-color: #007bff;
+          color: white;
+          padding: 10px 15px;
+        }
+
+        .submit-button:hover {
+          background-color: #0069d9;
+        }
+      }
+    }
+  }
+}
+
+//footer 
+footer {
+  background-color: #AAA1B3;
+
+  
+  .container {
+    @include mixinContainer;
   }
 }

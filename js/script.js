@@ -84,9 +84,6 @@ const sliderHandler = () => {
       didSlideEnd = true;
     }, 600);
   }
-  
-  regularSlideChange = setInterval(changeSlideOnNext, 5000);
-
 
   leftBtn.addEventListener('click', () => {
     if(didSlideEnd){
@@ -114,9 +111,7 @@ const sliderHandler = () => {
       }, 600);
       clearInterval(regularSlideChange);
       regularSlideChange = setInterval(changeSlideOnNext, 5000);
-    } else {
-      console.log('You must wait until animation end');
-    }
+    } 
   })
 
   rightBtn.addEventListener('click', () => {
@@ -125,10 +120,9 @@ const sliderHandler = () => {
       clearInterval(regularSlideChange);
       regularSlideChange = setInterval(changeSlideOnNext, 5000);
     }
-    else {
-      console.log('You must wait until animation end');
-    }
   })
+
+  regularSlideChange = setInterval(changeSlideOnNext, 5000);
 }
 
 sliderHandler()

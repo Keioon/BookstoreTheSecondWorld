@@ -4,3 +4,47 @@ $navbar-second-color: rgba(255,255,255,.5);
 $navbar-hover-color: rgba(255,255,255,.75);
 $navbar-btn-background: #6c757d;
 $navbar-btn-hover: #5a6268;
+$autors-hover-background: #f8f9fa;
+$borders-color: #d3d3d3;
+
+@mixin mixinButton {
+  button {
+    display: block;
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 16px;
+    transition: 0.3s;
+    background-color: #f8f9fa;
+    border: none;
+    border-radius: 5px;
+    margin: 10px 20px;
+  }
+
+  button:hover {
+    background-color: #e2e6ea;
+    cursor: pointer;
+  }
+}
+
+@mixin mixinContainer {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+@mixin mixinRow {
+  display: flex;
+  width: 100%;
+  padding-bottom: 30px;
+  justify-content: space-between;
+}
+
+@mixin mixinCard {
+  flex: 0 0 32%;
+  box-sizing: border-box;
+  border: 1px solid $borders-color;
+  display: flex;
+  padding: 25px;
+}
