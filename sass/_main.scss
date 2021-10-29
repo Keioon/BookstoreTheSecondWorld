@@ -157,68 +157,6 @@ body {
   }
 }
 
-@media (min-width: 768px) {
-  .navbar {
-    .navbar-hamburger {
-      display: none;
-    }
-  }
-}
-
-@media (max-width: 768px  ) {
-  .navbar {
-    justify-content: space-between;
-    flex-wrap: wrap;
-
-    .navbar-title {
-      order: 1;
-    }
-
-    .navbar-hamburger {
-      order: 2;
-    }
-
-    .navbar-nav {
-      display: none;
-      order: 3;
-    }
-
-    .navbar-buttons {
-      display: none;
-      order: 4;
-    }
-
-    .navbar-buttons.active {
-      display: flex;
-      width: 50%;
-      margin: auto;
-
-    }
-
-    .navbar-nav.active {
-      display: flex;
-      flex-wrap: wrap;
-      width: 100%;
-
-      li {
-        width: 100%;
-
-        .dropdown-menu.show {
-          width: 100%;
-          position: relative;
-          display: block;
-          transform: translateX(-1%);
-          
-          a {
-            padding:  0 10px;
-            margin: 5px 0;
-          }
-        }
-      }
-    }
-  }
-}
-
 //main-slider
 .main-slider {
   width: 100%;
@@ -427,7 +365,6 @@ body {
         @include mixinRow;
 
         .second-image {
-          height: 100%;
           flex: 0 0 50%;
           max-width: 50%;
           box-sizing: border-box;
@@ -458,11 +395,14 @@ body {
 
 //support
 .support {
+  margin-bottom: 50px;
+
   .container {
     @include mixinContainer;
 
     .row {
       @include mixinRow;
+      padding-bottom: 0;
 
       .card {
         @include mixinCard;
@@ -505,12 +445,14 @@ body {
 
     .row {
       @include mixinRow;
+      padding-bottom: 0;
 
       .card {
-        @include mixinCard;
-        flex: 1 0 33%;
-        padding: 0 50px;
+        box-sizing: border-box;
+        padding: 30px 3vw;
         border: none;
+        flex: 0 0 32%;
+        display: flex;
         flex-wrap: wrap;
 
         .small {
@@ -529,30 +471,24 @@ body {
           flex: 0 0 100%;
           font-size: 18px;
 
-          a {
-            text-decoration: none;
-            color: #007bff;
-          }
-
-          a:hover {
-            text-decoration: underline;
-            cursor: pointer;
-            color: #0056b3;
-          }
+          @include mixinA;
         }
 
         ul {
           @include mixinRow;
-          padding-top: 20px;
-          width: 100%;
-          flex: 0 0 100%;
-          display: flex;
+          padding-bottom: 10px;
+          padding-top: 10px;
+          justify-content: left;
+          // flex: 0 0 100%;
           flex-wrap: nowrap;
+          align-items: center;
+
 
           li {
             list-style-type: none;
             display: block;
-            flex: 0 0 25%;
+            padding: 5px 10px;
+            text-align: center;
 
             i {
               transition: 0.3s;
@@ -579,6 +515,8 @@ body {
 
         input {
           margin-top: 10px; 
+          width: 100%;
+          padding: 5px;
         }
         
 
@@ -594,6 +532,18 @@ body {
           background-color: #0069d9;
         }
       }
+
+      .order-1 {
+        order: 1;
+      }
+
+      .order-2 {
+        order: 2;
+      }
+
+      .order-3 {
+        order: 3;
+      }
     }
   }
 }
@@ -601,9 +551,195 @@ body {
 //footer 
 footer {
   background-color: #AAA1B3;
-
+  width: 100%;
   
   .container {
     @include mixinContainer;
+
+    .row {
+      @include mixinRow;
+      padding: 5px 0;
+      margin: auto;
+      text-align: center;
+
+      .col-left{
+        flex: 0 0 30%;
+      }
+
+      .col-right{
+        flex: 0 0 70%;
+        text-align: center;
+
+        ul {
+          display: flex;
+          justify-content: right;
+          flex-wrap: wrap;
+          padding-right: 20px;
+
+          li {
+            padding: 0 5px;
+            list-style-type: none;
+
+            @include mixinA;
+          }
+        }
+      }
+
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    .navbar-hamburger {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 768px  ) {
+  .navbar {
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .navbar-title {
+      order: 1;
+    }
+
+    .navbar-hamburger {
+      order: 2;
+    }
+
+    .navbar-nav {
+      display: none;
+      order: 3;
+    }
+
+    .navbar-buttons {
+      display: none;
+      order: 4;
+    }
+
+    .navbar-buttons.active {
+      display: flex;
+      width: 50%;
+      margin: auto;
+
+    }
+
+    .navbar-nav.active {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+
+      li {
+        width: 100%;
+
+        .dropdown-menu.show {
+          width: 100%;
+          position: relative;
+          display: block;
+          transform: translateX(-1%);
+          
+          a {
+            padding:  0 10px;
+            margin: 5px 0;
+          }
+        }
+      }
+    }
+  }
+
+  .products {
+
+    .container {
+      max-width: 600px;
+      flex-wrap: wrap;
+
+      .wrap {
+        .row {
+          flex-wrap: wrap;
+          padding-bottom: 30px;
+          justify-content: center;
+
+          .second-image {
+            flex: 0 0 100%;
+            max-width: 100%;
+          }
+
+          .second-image:first-of-type {
+            padding: 0 0 30px 0;
+            padding-bottom: 30px;
+          }
+        }
+      }
+
+      .autors {
+        flex-basis: 100%;
+      }
+
+      .books {
+        flex-basis: 100%;
+      }
+    }
+  }
+
+  .contact {
+    .container {
+      max-width: 600px;
+
+      .row {
+        flex-wrap: wrap;
+        
+        .card{
+          flex: 0 0 100%;
+        }
+  
+        .order-1-3 {
+          order: 3;
+        }
+        
+        .order-2-1 {
+          order: 1;
+        }
+        
+        .order-3-2 {
+          order: 2;
+        }
+      }
+    }
+  }
+
+  .support {
+    .container {
+      max-width: 600px;
+
+      .row {
+        flex-wrap: wrap;
+        .card{
+          flex: 0 0 100%;
+        }
+      }
+    }
+  }
+
+  footer {
+    .container {
+      max-width: 600px;
+
+      .row {
+        flex-wrap: wrap;
+        
+        .col-left {
+          flex-basis:  100%;
+          text-align: left;
+        }
+  
+        .col-right {
+          flex-basis: 100%;
+          text-align: right;
+        }
+      }
+    }
   }
 }
