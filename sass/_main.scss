@@ -62,6 +62,11 @@ body {
       margin: 0 10px;
       line-height: 40px;
 
+      a {
+        text-decoration: none;
+        color: $navbar-second-color;
+      }
+
       .dropdown-menu {
         position: absolute;
         transform: translateX(-10%);
@@ -131,7 +136,7 @@ body {
     border: 0.3px solid rgba(255,255,255,.1);
     border-radius: 5px;
     color: rgba(255,255,255,.5);
-    display: flex;
+    display: none;
 
     :hover {
       cursor: pointer;
@@ -161,6 +166,7 @@ body {
 .main-slider {
   width: 100%;
   height: 100vh;
+  position: relative;
   margin-bottom: 50px;
   overflow: hidden;
 
@@ -223,7 +229,7 @@ body {
     button {
       position: absolute;
       top: 50%;
-      z-index: 6;
+      z-index: 2;
       transform: translateY(-50%);
       background-color: transparent;
       border: none;
@@ -276,9 +282,15 @@ body {
       .autors-list {
         max-height: 90%;
         border: 1px solid $borders-color;
+        background-color: white;
         border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+        overflow-y: auto;
+        @include scrollbars(8px, 100%, white, $borders-color, (1px solid $borders-color));
 
         li {
+          z-index: 4;
           list-style-type: none;
           padding: 15px 20px;
           display: block;
@@ -316,6 +328,7 @@ body {
         overflow: hidden;
         overflow-x: auto;
         display: flex;
+        @include scrollbars(10px, 8px, white, $borders-color, none);
   
         .box {
           height: 100%;
@@ -377,6 +390,10 @@ body {
           padding-right: 15px;
         }
       }
+
+      .horizontal-image {
+        flex: 0 0 100%;
+      }
   
       // .third-image {
       //   box-sizing: border-box;
@@ -389,6 +406,7 @@ body {
         border: 1px solid $borders-color;
         object-fit: cover;
       }
+
     }
   }
 }
@@ -435,6 +453,7 @@ body {
   }
 }
 
+//contact
 .contact {
   width: 100%;
   background-color: #eff2f5;
@@ -460,9 +479,10 @@ body {
           color: gray;
         }
 
-        h3 {
+        a {
           font-size: 28px;
           letter-spacing: 1px;
+          font-weight: bold;
           flex: 0 0 100%;
           padding-bottom: 5px;
         }
@@ -471,7 +491,7 @@ body {
           flex: 0 0 100%;
           font-size: 18px;
 
-          @include mixinA;
+          @include mixinA(18px);
         }
 
         ul {
@@ -563,36 +583,56 @@ footer {
       text-align: center;
 
       .col-left{
-        flex: 0 0 30%;
+        flex: 0 0 50%;
+        display: flex;
+        overflow: hidden;
+
+        ul {
+          flex: 0 0 100%;
+          list-style-type: none;
+          position: relative;
+          top: 0;
+          transition: 0.4s;
+
+          li {
+            width: 100%;
+            text-align: left;
+          }
+
+          .hide {
+            position: absolute;
+            top: 100%;
+          }
+
+          .show {
+            top: 0;
+            position: absolute;
+          }
+        }
+
+        ul:hover {
+          top: -100%;
+        }
       }
 
       .col-right{
-        flex: 0 0 70%;
+        flex: 0 0 50%;
         text-align: center;
 
         ul {
           display: flex;
           justify-content: right;
           flex-wrap: wrap;
-          padding-right: 20px;
 
           li {
             padding: 0 5px;
             list-style-type: none;
 
-            @include mixinA;
+            @include mixinA(16px);
           }
         }
       }
 
-    }
-  }
-}
-
-@media (min-width: 768px) {
-  .navbar {
-    .navbar-hamburger {
-      display: none;
     }
   }
 }
@@ -608,6 +648,7 @@ footer {
 
     .navbar-hamburger {
       order: 2;
+      display: flex;
     }
 
     .navbar-nav {
@@ -669,7 +710,6 @@ footer {
 
           .second-image:first-of-type {
             padding: 0 0 30px 0;
-            padding-bottom: 30px;
           }
         }
       }
@@ -729,15 +769,61 @@ footer {
 
       .row {
         flex-wrap: wrap;
+        overflow: hidden;
         
         .col-left {
           flex-basis:  100%;
-          text-align: left;
+          min-height: 18px;
+          
+          ul {
+            display: flex;
+          }
+          
+          ul:hover {
+            top: -100%;
+          }
         }
   
         .col-right {
           flex-basis: 100%;
+          min-height: 18px;
           text-align: right;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .products {
+    .container {
+      max-width: 540px;
+    }
+  }
+
+  .contact {
+    .container {
+      max-width: 540px;
+    }
+  }
+
+  .support {
+    .container {
+      max-width: 540px;
+    }
+  }
+
+  footer {
+    .container {
+      max-width: 540px;
+
+      .row {
+        flex-wrap: wrap;
+        overflow: hidden;
+        
+        .col-left {
+          flex-basis:  100%;
+          min-height: 36px;
         }
       }
     }
