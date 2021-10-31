@@ -7,17 +7,21 @@ $navbar-btn-hover: #5a6268;
 $autors-hover-background: #f8f9fa;
 $borders-color: #d3d3d3;
 
-@mixin mixinButton {
+@mixin mixinButton($position, $top, $left, $translateX, $translateY, $marginY, $marginX) {
   button {
+    position: $position;
     display: block;
     padding: 5px 10px;
-    text-align: center;
     font-size: 16px;
     transition: 0.3s;
     background-color: #f8f9fa;
     border: none;
     border-radius: 5px;
-    margin: 10px 20px;
+    margin: $marginY $marginX;//10px, 20px
+
+    top: $top;
+    left: $left;
+    transform: translate($translateX, $translateY);
   }
 
   button:hover {

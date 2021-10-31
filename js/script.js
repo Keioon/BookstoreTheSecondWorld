@@ -125,5 +125,18 @@ const sliderHandler = () => {
   regularSlideChange = setInterval(changeSlideOnNext, 5000);
 }
 
+const autorsListCreate = (autors) => {
+  const autorsList = document.querySelector('.autors-list');
+
+  autors.forEach(autor => {
+    const aElem = document.createElement("a");
+    aElem.innerHTML = autor;
+    aElem.href = `#${autor}`;
+    autorsList.appendChild(aElem);
+  })
+  console.log('done');
+}
+
+autorsListCreate(dataSources.autorsList);
 sliderHandler()
 navbarButtonListener()

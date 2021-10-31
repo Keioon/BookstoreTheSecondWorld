@@ -89,6 +89,7 @@ body {
         a {
           display: block;
           padding: .25rem 1.5rem;
+          color: black;
         }
 
         :hover {
@@ -289,20 +290,20 @@ body {
         overflow-y: auto;
         @include scrollbars(8px, 100%, white, $borders-color, (1px solid $borders-color));
 
-        li {
-          z-index: 4;
-          list-style-type: none;
+        a {
           padding: 15px 20px;
           display: block;
           border-bottom: 1px solid $borders-color;
+          text-decoration: none;
+          color: black;
         }
 
-        li:hover {
+        a:hover {
           background-color: $autors-hover-background;
           cursor: pointer;
         }
 
-        li:last-of-type {
+        a:last-of-type {
           border: none;
         }
       }
@@ -359,7 +360,7 @@ body {
               padding: 10px 10px 0 10px;
             }
   
-            @include mixinButton;
+            @include mixinButton(static, 0, 0, 0, 0, 10px, 20px);
           }
         }
 
@@ -383,7 +384,9 @@ body {
           box-sizing: border-box;
           object-fit: cover;
           display: block;
-          // @include addButton;
+          position: relative;
+
+          @include mixinButton(absolute, 50%, 50%, -50%, -50%, 0, 0);
         }
 
         .second-image:first-of-type {
@@ -393,11 +396,9 @@ body {
 
       .horizontal-image {
         flex: 0 0 100%;
+        position: relative;
+        @include mixinButton(absolute, 50%, 50%, -50%, -50%, 0, 0);
       }
-  
-      // .third-image {
-      //   box-sizing: border-box;
-      // }
 
       img {
         width: 100%;
@@ -540,7 +541,7 @@ body {
         }
         
 
-        @include mixinButton;
+        @include mixinButton(static, 0, 0, 0, 0, 10px, 20px);
         .submit-button {
           background-color: #007bff;
           border-color: #007bff;
@@ -586,7 +587,7 @@ footer {
         flex: 0 0 50%;
         display: flex;
         overflow: hidden;
-
+        
         ul {
           flex: 0 0 100%;
           list-style-type: none;
