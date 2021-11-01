@@ -1,6 +1,17 @@
-const navbarButtonListener = () => {
+const buttonListener = () => {
   const dropdownMenu = document.querySelector('.dropdown-menu');
   const dropdown = document.querySelector('.dropdown');
+  const accountBtn = document.querySelector(".fa-user-alt");
+  const accountModal = document.querySelector('.modal-wrap-account');
+  const accountModalCloseBtn = document.querySelector('.accountClose')
+  
+  accountBtn.addEventListener('click', () => {
+    accountModal.classList.add('active');
+  })
+
+  accountModalCloseBtn.addEventListener('click', () => {
+    accountModal.classList.remove('active');
+  })
 
   const showRemover = (list) => {
     for(li of list) {
@@ -33,7 +44,7 @@ const navbarButtonListener = () => {
       } else if(e.target.classList.contains('fa-user-alt')) {
         e.target.parentNode.classList.toggle('show');
         showRemover(showedList);
-      }
+      } 
     
     }
   })
@@ -139,4 +150,4 @@ const autorsListCreate = (autors) => {
 
 autorsListCreate(dataSources.autorsList);
 sliderHandler()
-navbarButtonListener()
+buttonListener()

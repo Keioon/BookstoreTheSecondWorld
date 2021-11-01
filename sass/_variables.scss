@@ -68,22 +68,6 @@ $borders-color: #d3d3d3;
   }
 }
 
-// @mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
-//   // For Google Chrome
-//   &::-webkit-scrollbar {
-//     width:  $size;
-//     height: $size;
-//   }
-
-//   &::-webkit-scrollbar-thumb {
-//     background: $foreground-color;
-//   }
-
-//   &::-webkit-scrollbar-track {
-//     background: $background-color;
-//   }
-// }
-
 @mixin scrollbars($width, $height, $background-color, $arrow-color, $border) {
   &::-webkit-scrollbar {
     width: $width;
