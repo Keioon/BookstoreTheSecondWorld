@@ -185,6 +185,7 @@ body {
 
   .modal.active {
     border: 2px solid black;
+    max-width: 360px;
     border-radius: 30px;
     overflow: hidden;
     display: flex;

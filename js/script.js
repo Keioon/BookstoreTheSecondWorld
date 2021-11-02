@@ -168,12 +168,53 @@ const autorsListCreate = autors => {
     aElem.href = `#${autor}`;
     autorsList.appendChild(aElem);
   })
-  console.log('done');
 }
 
-const booksListCreate = (books, typeOrAuthot) => {
+const booksListCreate = books => {
   const booksList = document.querySelector('.books-list');
-  console.log(booksList);
+  books.forEach(elem => {
+    const box = document.createElement('div');
+    box.classList.add('box'); 
+    box.setAttribute('data-id', elem.id);
+    box.setAttribute('data-type', elem.type);
+    box.setAttribute('data-author', elem.autor);
+
+    const cardImage = document.createElement('div');
+    cardImage.classList.add('card-image');
+    const img = document.createElement('img');
+    img.src = elem.img;
+    cardImage.appendChild(img);
+    box.appendChild(cardImage);
+
+    const textDiv = document.createElement('div');
+    textDiv.classList.add('text');
+
+    const title = document.createElement('h2');
+    title.innerHTML = elem.title;
+    textDiv.appendChild(title);
+
+    const boxButtons = document.createElement('div');
+    boxButtons.classList.add('box-buttons');
+    const addBtn = document.createElement('button');
+    if(elem.amount == 0) {
+      addBtn.classList.add('add-button')
+      addBtn.classList.add('lack')
+    } else {
+      addBtn.classList.add('add-button')
+    }
+    addBtn.innerHTML = "Add to Cart";
+    boxButtons.appendChild(addBtn);
+
+    const readBtn = document.createElement('button');
+    readBtn.classList.add('read-button');
+    readBtn.innerHTML = "Read more";
+
+    boxButtons.appendChild(readBtn);
+    textDiv.appendChild(boxButtons);
+    
+    box.appendChild(textDiv);
+    booksList.appendChild(box);
+  })
 }
 
 autorsListCreate(dataSources.autorsList);
