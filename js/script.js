@@ -2,18 +2,35 @@ const buttonListener = () => {
   const dropdownMenu = document.querySelector('.dropdown-menu');
   const dropdown = document.querySelector('.dropdown');
   const accountBtn = document.querySelector(".fa-user-alt");
-  const accountModal = document.querySelector('.modal-wrap-account');
-  const accountModalCloseBtn = document.querySelector('.accountClose')
+  const modal = document.querySelector('.modal-wrap');
+  const modalCloseBtn = document.querySelector('.modalClose')
+  const modalBtn = document.querySelector('.modal');
+  const modalRead = document.querySelector('.modal-read');
+  // const readButtons = document.querySelectorAll('.read-button');
+  // console.log(readButtons);;
+
+  blurToggler = () => {
+    [...document.body.children].forEach(elem => {
+      if(elem.classList != ""  || elem.localName == "footer") {
+        elem.classList.toggle('blur');
+      }
+    })
+    modal.classList.remove('blur');
+  }
   
   accountBtn.addEventListener('click', () => {
-    accountModal.classList.add('active');
+    blurToggler();
+    modal.classList.add('active');
+    modalBtn.classList.add('active');
   })
 
-  accountModalCloseBtn.addEventListener('click', () => {
-    accountModal.classList.remove('active');
+  modalCloseBtn.addEventListener('click', () => {
+    blurToggler();
+    modal.classList.remove('active');
+    modalBtn.classList.remove('active');
   })
 
-  const showRemover = (list) => {
+  showRemover = (list) => {
     for(li of list) {
       li.classList.remove('show');
     }
@@ -22,8 +39,14 @@ const buttonListener = () => {
   document.body.addEventListener('click', function(e){
     if(!e.target.classList.contains('menu')){
       const showedList = [...document.querySelectorAll('.show')];
-      //console.log(e.target);
       showRemover(showedList);
+
+      if(e.target.classList.contains('read-button')) {
+        console.log('blur');
+        blurToggler();
+        modal.classList.add('active');
+        modalRead.classList.add('active');
+      } 
     } else {
       //console.log(e.target);
       const showedList = [...document.querySelectorAll('.show')];
@@ -136,7 +159,7 @@ const sliderHandler = () => {
   regularSlideChange = setInterval(changeSlideOnNext, 5000);
 }
 
-const autorsListCreate = (autors) => {
+const autorsListCreate = autors => {
   const autorsList = document.querySelector('.autors-list');
 
   autors.forEach(autor => {
@@ -148,6 +171,12 @@ const autorsListCreate = (autors) => {
   console.log('done');
 }
 
+const booksListCreate = (books, typeOrAuthot) => {
+  const booksList = document.querySelector('.books-list');
+  console.log(booksList);
+}
+
 autorsListCreate(dataSources.autorsList);
+booksListCreate(dataSources.booksList)
 sliderHandler()
 buttonListener()

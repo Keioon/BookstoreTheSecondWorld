@@ -79,7 +79,10 @@ body {
     
       .dropdown-menu.show {
         display: block;
+        max-height: 250px;
         float: none;
+        overflow-y: scroll;
+        @include scrollbars(10px, 8px, white, $borders-color, none);
         background-color: $navbar-first-color;
         color: black;
         border: 0.3px solid black;
@@ -163,12 +166,12 @@ body {
   }
 }
 
-//modal-wrap-account
-.modal-wrap-account {
+//modal-wrap
+.modal-wrap {
   display: none;
 }
 
-.modal-wrap-account.active {
+.modal-wrap.active {
   position: fixed;
   z-index: 6;
   display: block;
@@ -177,6 +180,10 @@ body {
   background-color: rgba(0, 0, 0, .5);
 
   .modal {
+    display: none;
+  }
+
+  .modal.active {
     border: 2px solid black;
     border-radius: 30px;
     overflow: hidden;
@@ -203,7 +210,6 @@ body {
 
       form {
         margin: 5px auto;
-        padding: 5px 0;
         height: 100%;
         display: flex;
         flex-wrap: wrap;
@@ -245,7 +251,6 @@ body {
 
       form {
         margin: 5px auto;
-        padding: 5px 0;
         height: 100%;
         display: flex;
         flex-wrap: wrap;
@@ -273,6 +278,69 @@ body {
     }
   }
 
+  .modal-read {
+    display: none;
+  }
+
+  .modal-read.active {
+    display: block;
+    border: 2px solid black;
+    border-radius: 30px;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 80%;
+    transition: 0.5s;
+    background-color: rgba(255, 255, 255, 0.9);
+    
+    h2 {
+      width: 100%;
+      text-align: center;
+      margin: 5px auto;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    p {
+      padding: 2px 10px;
+      text-align: left;
+      text-indent: 1.5em;
+    }
+
+    .row {
+      @include mixinRow(space-around, 10px, 5px);
+      padding-top: 10px;
+      box-sizing: border-box;
+
+      p {
+        text-align: center;
+        text-indent: 0;
+        display: flex;
+        align-self: center;
+        margin: auto;
+      }
+      
+      button {
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid black;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #5a62688c;
+      }
+      
+      .lack {
+        cursor: not-allowed ;
+      }
+    }
+  }
+
   span {
     position: fixed;
     top: 10%;
@@ -290,6 +358,9 @@ body {
   }
 }
 
+.blur {
+  filter: blur(2px);
+}
 
 //main-slider
 .main-slider {
@@ -477,7 +548,9 @@ body {
             }
           }
           .text {
-            display: block;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
             width: 100%;
             height: 25%;
             border: 1px solid $borders-color;
@@ -485,11 +558,28 @@ body {
   
             h2 {
               font-size: 20px;
+              flex-basis: 100%;
               padding: 10px 10px 0 10px;
             }
+
+            @include mixinButton(static, 0, 0, 0, 0, 5px, 5px, 5px, 10px);
   
-            @include mixinButton(static, 0, 0, 0, 0, 10px, 20px);
+            .box-buttons {
+              margin: 4px 2px ;
+              flex-basis: 100%;
+              display: flex;
+              flex-wrap: nowrap;
+              @include mixinButton(static, 0, 0, 0, 0, 0, 2px, 5px, 2px);
+
+              .lack {
+                cursor: not-allowed ;
+              }
+            }
           }
+        }
+
+        .hide {
+          display: none;
         }
 
         .box:last-of-type {
@@ -506,7 +596,7 @@ body {
       a{
         flex-basis: 100%;
         .row {
-          @include mixinRow;
+          @include mixinRow(space-between, 30px, 0);
   
           .second-image {
             flex: 0 0 50%;
@@ -516,7 +606,7 @@ body {
             display: block;
             position: relative;
   
-            @include mixinButton(absolute, 50%, 50%, -50%, -50%, 0, 0);
+            @include mixinButton(absolute, 50%, 50%, -50%, -50%, 0, 0, 5px, 10px);
           }
   
           .second-image:first-of-type {
@@ -527,7 +617,7 @@ body {
         .horizontal-image {
           flex: 0 0 100%;
           position: relative;
-          @include mixinButton(absolute, 50%, 50%, -50%, -50%, 0, 0);
+          @include mixinButton(absolute, 50%, 50%, -50%, -50%, 0, 0, 5px, 10px);
         }
   
         img {
@@ -552,8 +642,7 @@ body {
     @include mixinContainer;
 
     .row {
-      @include mixinRow;
-      padding-bottom: 0;
+      @include mixinRow(space-between, 0, 0);
 
       .card {
         @include mixinCard;
@@ -596,8 +685,7 @@ body {
     padding: 30px;
 
     .row {
-      @include mixinRow;
-      padding-bottom: 0;
+      @include mixinRow(space-between, 0, 0);
 
       .card {
         box-sizing: border-box;
@@ -628,11 +716,8 @@ body {
         }
 
         ul {
-          @include mixinRow;
-          padding-bottom: 10px;
+          @include mixinRow(left, 10px, 0);
           padding-top: 10px;
-          justify-content: left;
-          // flex: 0 0 100%;
           flex-wrap: nowrap;
           align-items: center;
 
@@ -673,7 +758,7 @@ body {
         }
         
 
-        @include mixinButton(static, 0, 0, 0, 0, 10px, 20px);
+        @include mixinButton(static, 0, 0, 0, 0, 10px, 20px, 5px, 10px);
         .submit-button {
           background-color: #007bff;
           border-color: #007bff;
@@ -710,8 +795,8 @@ footer {
     @include mixinContainer;
 
     .row {
-      @include mixinRow;
-      padding: 5px 0;
+      @include mixinRow(space-between, 5px, 0);
+      padding-top: 5px;
       margin: auto;
       text-align: center;
 
@@ -824,8 +909,8 @@ footer {
     }
   }
 
-  .modal-wrap-account.active {
-    .modal {
+  .modal-wrap.active {
+    .modal.active {
       width: 50%;
       transition: 0.5s;
 
@@ -850,6 +935,10 @@ footer {
           }
         }
       }
+    }
+
+    .modal-read.active {
+      width: 50%;
     }
 
     span {
@@ -970,8 +1059,8 @@ footer {
     }
   }
 
-  .modal-wrap-account.active {
-    .modal {
+  .modal-wrap.active {
+    .modal.active {
       width: 70%;
       transition: 0.5s;
 
@@ -996,6 +1085,10 @@ footer {
           }
         }
       }
+    }
+
+    .modal-read.active {
+      width: 70%;
     }
 
     span {

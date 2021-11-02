@@ -7,26 +7,27 @@ $navbar-btn-hover: #5a6268;
 $autors-hover-background: #f8f9fa;
 $borders-color: #d3d3d3;
 
-@mixin mixinButton($position, $top, $left, $translateX, $translateY, $marginY, $marginX) {
+@mixin mixinButton($position, $top, $left, $translateX, $translateY, $marginY, $marginX, $paddingY, $paddingX) {
   button {
+    box-sizing: border-box;
     position: $position;
     display: block;
-    padding: 5px 10px;
+    padding: $paddingY $paddingX;
     font-size: 16px;
     transition: 0.3s;
     background-color: #f8f9fa;
     border: none;
     border-radius: 5px;
     margin: $marginY $marginX;//10px, 20px
-
+    flex-basis: 50%;
     top: $top;
     left: $left;
     transform: translate($translateX, $translateY);
+    cursor: pointer;
   }
 
   button:hover {
     background-color: #e2e6ea;
-    cursor: pointer;
   }
 }
 
@@ -38,11 +39,13 @@ $borders-color: #d3d3d3;
   margin: 0 auto;
 }
 
-@mixin mixinRow {
+@mixin mixinRow($justify, $pBottom, $pLeftRight) {
   display: flex;
   width: 100%;
-  padding-bottom: 30px;
-  justify-content: space-between;
+  padding-bottom: $pBottom; //30px;
+  padding-left: $pLeftRight;
+  padding-right: $pLeftRight;
+  justify-content: $justify;
 }
 
 @mixin mixinCard {
