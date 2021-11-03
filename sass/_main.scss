@@ -533,14 +533,15 @@ body {
   
         .box {
           height: 100%;
+          max-width: 220px;
           box-sizing: border-box;
-          padding: 0px 20px 0 0;
+          padding: 0px 10px;
           display: flex;
           flex-wrap: wrap;
 
           .card-image {
             height: 75%;
-            width: 200px;
+            width: 220px;
             display: block;
 
             img {
@@ -560,7 +561,8 @@ body {
             h2 {
               font-size: 20px;
               flex-basis: 100%;
-              padding: 10px 10px 0 10px;
+              text-align: center;
+              padding: 10px 5px 0 5px;
             }
 
             @include mixinButton(static, 0, 0, 0, 0, 5px, 5px, 5px, 10px);
@@ -581,10 +583,6 @@ body {
 
         .hide {
           display: none;
-        }
-
-        .box:last-of-type {
-          padding-right: 2px;
         }
       }
     }

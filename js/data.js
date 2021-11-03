@@ -711,7 +711,7 @@ dataSources.booksList = [
     id: 53,
     title: "Lizbończyk",
     autor: "Fernando Sobral",
-    type: "'Detective', 'Cryminal'",
+    type: "'Detective' 'Cryminal'",
     img: "images/lizbończyk.jpg",
     description: `Nocą Lizbona to widmowe miasto, w którym roi się od zbrodni.
     Od miłości. I od lęków. Tam, gdzie kończy się jedna Lizbona i zaczyna druga, jedynie potężne reklamy stwarzają pozory szczęścia.
@@ -776,7 +776,7 @@ dataSources.booksList = [
   {
     id: 58,
     title: "Nick i Nora Playlista Dla Dwojga",
-    autor: "'Rachel Cohn', 'David Levithan'",
+    autor: "'Rachel Cohn' 'David Levithan'",
     type: "Romance",
     img: "images/nickINoraPlaylistaDlaDwojga.jpg",
     description: `„Wiem, że to dziwne pytanie, ale czy miałabyś coś przeciwko udawaniu mojej dziewczyny przez następne pięć minut?".
@@ -878,7 +878,7 @@ dataSources.booksList = [
   {
     id: 66,
     title: "Tunele",
-    autor: "'Roderick Gordon','Brian Williams'",
+    autor: "'Roderick Gordon' 'Brian Williams'",
     type: "Fantasy",
     img: "images/tunele.jpg",
     description: `Czternastoletni Will różni się od swoich rówieśników nie tylko wyglądem – jest albinosem – ale przede wszystkim zainteresowaniami. Wraz z ojcem, doktorem Burrowsem, kustoszem miejskiego muzeum, uwielbia kopać tunele. Posługując się planami miasta, poszukiwacze odkrywają starą stację metra oraz wiele innych, znacznie mniej fascynujących i zaspokajających ciekawość poszukiwaczy, miejsc. Chłopiec pragnie zaimponowac ojcu, dlatego każdego dnia, drążąc tunel, ma nadzieję natknąć się na coś olśniewającego. Właściwie tylko doktor Burrows interesuje się wykopaliskami syna. Pozostała część rodziny żyje własnym życiem – matka całe dnie spędza przed telewizorem, uzbrojona w piloty starannie ułożone na oparciach fotela; dwunastoletnia siostra Rebeka natomiast utrzymuje porządek w domu, płaci rachunki, przygotowuje posiłki. Domownicy nie interesują się sobą nawzajem. Nawet, gdy w tajemniczych okolicznościach znika ojciec rodziny, reakcja i poważne kroki zostają podjęte dopiero po kilku dniach. Po bezskutecznej interwencji policji Will postanawia wziąć sprawy w swoje ręce i wraz z przyjacielem, Chesterem, wyrusza na poszukiwania ojca. Jak łatwo się domyślić, chłopcy odkrywają w piwnicy wydrążony tunel, który prowadzi ich w miejsce, jakiego w najmroczniejszych snach nie byliby w stanie sobie wyobrazić. Przygoda, która mieniła się pięknymi barwami, zmieniła się w koszmar, który może kosztowac chłopców życie.`,
@@ -888,7 +888,7 @@ dataSources.booksList = [
   {
     id: 67,
     title: "Tunele Głębiej",
-    autor: "'Roderick Gordon','Brian Williams'",
+    autor: "'Roderick Gordon' 'Brian Williams'",
     type: "Fantasy",
     img: "images/tuneleGłębiej.jpg",
     description: `"Tunele. Głębiej" to kontynuacja fascynujących przygód Willa Burrowsa i jego przyjaciela Chestera, których poznaliśmy w pierwszej części serii pt. "Tunele". Bohaterowie, szukając zaginionego w tajemniczych okolicznościach ojca Willa - doktora Burrowsa, odkryli tajemniczy, podziemny świat zwany Kolonią. W drugiej części chłopcy schodzą jeszcze niżej, docierają do Głębi, gdzie czekają ich nowe, dramatyczne wyzwania. Muszą uciekać przed okrutnymi Styksami, którzy na dodatek przygotowują spisek wymierzony przeciwko światu Górnoziemców. Czy przyjaciołom uda się przetrwać? Czy odnajdą ojca Willa? Zejdź głębiej i przeżyj niesamowitą przygodę. Rozwiąż wszystkie zagadki czytając "Tunele. Głębiej".`,
@@ -898,7 +898,7 @@ dataSources.booksList = [
   {
     id: 68,
     title: "Tunele Otchłań",
-    autor: "'Roderick Gordon','Brian Williams'",
+    autor: "'Roderick Gordon' 'Brian Williams'",
     type: "Fantasy",
     img: "images/tuneleOtchłań.jpg",
     description: `Trzeci tom serii o fascynującej podróży Willa i Chestera po podziemnej krainie. Poszukując doktora Burrowsa, chłopcy spadają jeszcze głębiej – w otchłań, gdzie już nie istnieje grawitacja. Odkrywają zaginioną starożytną cywilizację i poznają kolejne tajemnice świata ukrytego pod powierzchnią.`,
@@ -908,7 +908,7 @@ dataSources.booksList = [
   {
     id: 69,
     title: "Tunele Bliżej",
-    autor: "'Roderick Gordon','Brian Williams'",
+    autor: `Roderick Gordon Brian Williams`,
     type: "Fantasy",
     img: "images/tuneleBliżej.jpg",
     description: `"Tunele. Bliżej" to kontynuacja fascynującej podróży Willa Burrowsa w głąb tajemniczych, podziemnych światów, która zachwyciła młodszych i starszych fanów przygody i fantasy na całym świecie.
@@ -920,7 +920,7 @@ dataSources.booksList = [
   {
     id: 70,
     title: "Tunele Spirala",
-    autor: "'Roderick Gordon','Brian Williams'",
+    autor: "Roderick Gordon Brian Williams",
     type: "Fantasy",
     img: "images/tuneleSpirala.jpg",
     description: `Piąty tom światowego bestsellera. Zaskakujący, brutalny, budzący grozę i przerażenie!
@@ -1008,7 +1008,7 @@ dataSources.booksList = [
 ];
 
 dataSources.autorsList = [
-  "Artu Conan Doyle",
+  "Artur Conan Doyle",
   "Andrzej Sapkowski",
   "Angus Watson",
   "Brandon Sanderson",

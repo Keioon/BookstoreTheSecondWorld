@@ -28,6 +28,7 @@ const buttonListener = () => {
     blurToggler();
     modal.classList.remove('active');
     modalBtn.classList.remove('active');
+    modalRead.classList.remove('active');
   })
 
   showRemover = (list) => {
@@ -38,17 +39,42 @@ const buttonListener = () => {
 
   document.body.addEventListener('click', function(e){
     if(!e.target.classList.contains('menu')){
+      e.target.preventDefault;
       const showedList = [...document.querySelectorAll('.show')];
       showRemover(showedList);
 
       if(e.target.classList.contains('read-button')) {
-        console.log('blur');
         blurToggler();
         modal.classList.add('active');
         modalRead.classList.add('active');
-      } 
+      } else if(e.target.getAttribute("data-autor")) {
+        const booksList = [...document.querySelectorAll('.box')];
+        booksList.filter(box => {
+          const autor = box.getAttribute("data-autor");
+          if(autor.includes(`${e.target.getAttribute("data-autor")}`)) {
+            //autor.includes(`${e.target.getAttribute("data-autor")}`)
+            //e.target.getAttribute("data-autor");
+            box.classList.remove('hide');
+          } else {
+            box.classList.add('hide');
+          }
+        });
+      } else if(e.target.getAttribute("data-type")) {
+        const booksList = [...document.querySelectorAll('.box')];
+        booksList.filter(box => {
+          const type = box.getAttribute("data-type");
+          if(type.includes(`${e.target.getAttribute("data-type")}`)) {
+            //autor.includes(`${e.target.getAttribute("data-autor")}`)
+            //e.target.getAttribute("data-autor");
+            box.classList.remove('hide');
+          } else {
+            box.classList.add('hide');
+          }
+        });
+      }
+
     } else {
-      //console.log(e.target);
+      e.target.preventDefault;
       const showedList = [...document.querySelectorAll('.show')];
       if(e.target.classList.contains('navbar-links') || e.target.classList.contains('dropdown')) {
         dropdown.classList.toggle('show');
@@ -165,7 +191,7 @@ const autorsListCreate = autors => {
   autors.forEach(autor => {
     const aElem = document.createElement("a");
     aElem.innerHTML = autor;
-    aElem.href = `#${autor}`;
+    aElem.setAttribute("data-autor", autor);
     autorsList.appendChild(aElem);
   })
 }
@@ -177,7 +203,7 @@ const booksListCreate = books => {
     box.classList.add('box'); 
     box.setAttribute('data-id', elem.id);
     box.setAttribute('data-type', elem.type);
-    box.setAttribute('data-author', elem.autor);
+    box.setAttribute('data-autor', elem.autor);
 
     const cardImage = document.createElement('div');
     cardImage.classList.add('card-image');
