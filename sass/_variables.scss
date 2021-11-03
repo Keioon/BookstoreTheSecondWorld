@@ -15,9 +15,9 @@ $borders-color: #d3d3d3;
     padding: $paddingY $paddingX;
     font-size: 16px;
     transition: 0.3s;
-    background-color: #f8f9fa;
+    background-color:lightgray;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     margin: $marginY $marginX;//10px, 20px
     flex-basis: 50%;
     top: $top;
@@ -79,7 +79,6 @@ $borders-color: #d3d3d3;
 
   &::-webkit-scrollbar-thumb {
     background: $arrow-color;
-    z-index: 0;
     border-radius: 5px;
   }
 
@@ -91,5 +90,6 @@ $borders-color: #d3d3d3;
     background: $background-color;
     border-radius: 5px;
     border-left: $border;
+    margin: 20px 0;
   }
 }

@@ -6,6 +6,7 @@ const buttonListener = () => {
   const modalCloseBtn = document.querySelector('.modalClose')
   const modalBtn = document.querySelector('.modal');
   const modalRead = document.querySelector('.modal-read');
+  let lastTarget = null;
   // const readButtons = document.querySelectorAll('.read-button');
   // console.log(readButtons);;
 
@@ -41,26 +42,45 @@ const buttonListener = () => {
     if(!e.target.classList.contains('menu')){
       e.target.preventDefault;
       const showedList = [...document.querySelectorAll('.show')];
+      const booksList = [...document.querySelectorAll('.box')];
+
       showRemover(showedList);
 
       if(e.target.classList.contains('read-button')) {
         blurToggler();
         modal.classList.add('active');
         modalRead.classList.add('active');
+        const id =  e.target.getAttribute("data-id");
+        const title = dataSources.booksList[id].title;
+        const discribe = dataSources.booksList[id].description;
+        const amount = dataSources.booksList[id].amount;
+        const price = dataSources.booksList[id].price;
+
+        document.querySelector('.modal-read h2').innerHTML = title;
+        document.querySelector('.modal-read p').innerHTML = discribe;
+        document.querySelector('.add-button').setAttribute('data-id', id);
+        if(dataSources.booksList[id].amount == 0) {
+          document.querySelector('.add-button').classList.add('lack');
+        }
+        document.querySelector('.stock').innerHTML = `In stock: ${amount}`;
+        document.querySelector('.price').innerHTML = `${price} PLN`;
+      } else if(e.target == lastTarget) {
+        booksList.forEach(box => {
+          box.classList.remove('hide');
+          lastTarget = null;
+        })
       } else if(e.target.getAttribute("data-autor")) {
-        const booksList = [...document.querySelectorAll('.box')];
         booksList.filter(box => {
           const autor = box.getAttribute("data-autor");
           if(autor.includes(`${e.target.getAttribute("data-autor")}`)) {
-            //autor.includes(`${e.target.getAttribute("data-autor")}`)
-            //e.target.getAttribute("data-autor");
             box.classList.remove('hide');
           } else {
             box.classList.add('hide');
           }
         });
+        lastTarget = e.target;
+        console.log(lastTarget);
       } else if(e.target.getAttribute("data-type")) {
-        const booksList = [...document.querySelectorAll('.box')];
         booksList.filter(box => {
           const type = box.getAttribute("data-type");
           if(type.includes(`${e.target.getAttribute("data-type")}`)) {
@@ -71,8 +91,7 @@ const buttonListener = () => {
             box.classList.add('hide');
           }
         });
-      }
-
+      } 
     } else {
       e.target.preventDefault;
       const showedList = [...document.querySelectorAll('.show')];
@@ -223,16 +242,17 @@ const booksListCreate = books => {
     boxButtons.classList.add('box-buttons');
     const addBtn = document.createElement('button');
     if(elem.amount == 0) {
-      addBtn.classList.add('add-button')
       addBtn.classList.add('lack')
-    } else {
-      addBtn.classList.add('add-button')
-    }
+    } 
+    addBtn.classList.add('add-button')
+    addBtn.setAttribute('data-id', elem.id)
+
     addBtn.innerHTML = "Add to Cart";
     boxButtons.appendChild(addBtn);
 
     const readBtn = document.createElement('button');
     readBtn.classList.add('read-button');
+    readBtn.setAttribute('data-id', elem.id)
     readBtn.innerHTML = "Read more";
 
     boxButtons.appendChild(readBtn);
