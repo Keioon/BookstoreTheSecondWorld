@@ -522,6 +522,10 @@ body {
         box-sizing: border-box;
         display: inline-block;
         padding: 5px;
+
+        a {
+          font-size: 30px;
+        }
       }
 
       .books-list {

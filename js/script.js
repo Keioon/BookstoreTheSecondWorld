@@ -47,6 +47,7 @@ const buttonListener = () => {
       showRemover(showedList);
 
       if(e.target.classList.contains('read-button')) {
+        e.target.preventDefault;
         blurToggler();
         modal.classList.add('active');
         modalRead.classList.add('active');
@@ -65,11 +66,13 @@ const buttonListener = () => {
         document.querySelector('.stock').innerHTML = `In stock: ${amount}`;
         document.querySelector('.price').innerHTML = `${price} PLN`;
       } else if(e.target == lastTarget) {
+        e.target.preventDefault;
         booksList.forEach(box => {
           box.classList.remove('hide');
           lastTarget = null;
         })
       } else if(e.target.getAttribute("data-autor")) {
+        e.target.preventDefault;
         booksList.filter(box => {
           const autor = box.getAttribute("data-autor");
           if(autor.includes(`${e.target.getAttribute("data-autor")}`)) {
@@ -81,6 +84,7 @@ const buttonListener = () => {
         lastTarget = e.target;
         console.log(lastTarget);
       } else if(e.target.getAttribute("data-type")) {
+        e.target.preventDefault;
         booksList.filter(box => {
           const type = box.getAttribute("data-type");
           if(type.includes(`${e.target.getAttribute("data-type")}`)) {
