@@ -24,7 +24,6 @@ dataSources.booksList = [
     description: `Doskonała kontynuacja "Drogi królów"<br>
 
     Świetliści Rycerze muszą znów powstać
-    <br>
     W końcu wypowiedziano starożytne przysięgi, spreny powracają. Ludzie szukają tego, co zostało utracone. Być może ta misja ich zniszczy.
     <br>
     Wiatrowy zagubił się w strzaskanej krainie i balansuje na granicy między zemstą a honorem. Tkaczka Światła, którą powoli pochłania przeszłość, poszukuje kłamstwa, którym musi się stać. Kowal Więzi, zrodzony z krwi i śmierci, teraz próbuje odbudować to, co zostało zniszczone. Badaczka, od której zależą losy dwóch ludów, zostaje zmuszona do dokonania wyboru między powolną śmiercią a straszliwą zdradą wszystkiego, w co wierzy.
@@ -39,7 +38,7 @@ dataSources.booksList = [
     title: "Dawca Przysięgi I",
     autor: "Brandon Sanderson",
     type: "Fantasy",
-    img: "images/słowaŚwiatłości.jpg",
+    img: "images/dawcaPrzysięgiCI.jpg",
     description: `W „Dawcy Przysięgi“, trzecim tomie bestsellerowego Archiwum Burzowego Światła, ludzkość musi stawił czoło nowemu Spustoszeniu i powrotowi Pustkowców - wroga, którego liczebność jest równie wielka, jak pragnienie zemsty.<br>
 
     Alethyjskie armie pod dowództwem Dalinara Kholina odniosły chwilowe zwycięstwo, jednak cena była straszliwa: Parshendi przywołali gwałtowną Wielką Burzę, która teraz niszczy świat, a jej przejście uświadamia niegdyś spokojnym i potulnym parshmenom prawdziwą grozę ich trwającego wiele tysiącleci uwięzienia. Podczas desperackiej misji, by ostrzec rodzinę przed nowym zagrożeniem, Kaladin Burzą Błogosławiony musi pogodzić się ze świadomością, że ich gniew może być całkowicie uzasadniony.<br>
@@ -53,7 +52,7 @@ dataSources.booksList = [
     title: "Dawca Przysięgi II",
     autor: "Brandon Sanderson",
     type: "Fantasy",
-    img: "images/rytmWojnyCI.jpg",
+    img: "images/dawcaPrzysięgiCII.jpg",
     description: `Przebudzeni parshendi – pieśniarze – pod wodzą służących Odium Stopionych wydają się niepowstrzymani. Wieczna Burza nieubłaganie powraca, za każdym razem sprowadzając śmierć i zniszczenie na ludzkie osady. Dalinar Kholin, udręczony powracającymi wspomnieniami przeszłości i nieżyjącej żony, nie szczędzi wysiłków, by zbudować koalicję ludzkich królestw, odkrywając przy tym swoje moce Kowala Więzi. Jednakże Odium ma wiele sług i wygląda na to, że jest przygotowany na każdą możliwość, a Świetlistym Rycerzom zagraża również tajemnica, która wcześniej doprowadziła do Odstępstwa ich starożytnych poprzedników.<br>
 
     Elhokar, Adolin, Shallan i Kaladin docierają do Kholinaru i odkrywają, że choć miasto jeszcze nie upadło, ich misja może się okazać o wiele trudniejsza, niż się spodziewali. Ludzie szepczą o mrocznej sile, która opanowała pałac i królową Aesudan, po ulicach zaś wędrują wyznawcy dziwacznego Kultu Chwil. A jedynym, co chroni miasto przed upadkiem, jest Straż Muru i jej tajemniczy dowódca, marszałek Lazur.<br>
