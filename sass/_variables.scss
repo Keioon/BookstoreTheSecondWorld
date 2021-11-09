@@ -71,7 +71,7 @@ $borders-color: #d3d3d3;
   }
 }
 
-@mixin scrollbars($width, $height, $background-color, $arrow-color, $border) {
+@mixin scrollbars($width, $height, $background-color, $arrow-color, $border, $marginTopBottm) {
   &::-webkit-scrollbar {
     width: $width;
     height: $height;
@@ -90,6 +90,6 @@ $borders-color: #d3d3d3;
     background: $background-color;
     border-radius: 5px;
     border-left: $border;
-    margin: 20px 0;
+    margin: $marginTopBottm 0;
   }
 }

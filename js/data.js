@@ -1,3 +1,5 @@
+'use strict';
+
 const dataSources = {}
 
 dataSources.booksList = [
@@ -30,7 +32,7 @@ dataSources.booksList = [
     <br>
     Najwyższy czas, by się przebudzili, nadchodzi bowiem Wieczna Burza.
     `,
-    amount: 10,
+    amount: 1,
     price: 45.99,
   },
   {
@@ -1006,6 +1008,17 @@ dataSources.booksList = [
   // },
 ];
 
+dataSources.cart = {
+  amountOfProduct: 0,
+  price: 0,
+  deliveryFee: 20,
+  // idOfProduct: [],
+  // titlesOfProduct: [],
+  products: [
+  ],
+  totalPrice: 0,
+};
+
 dataSources.autorsList = [
   "Artur Conan Doyle",
   "Andrzej Sapkowski",
@@ -1033,3 +1046,5 @@ dataSources.autorsList = [
   "Wasilij Machanienko",
   "Yves Grevet"
 ]
+
+export default dataSources;

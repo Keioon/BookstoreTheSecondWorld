@@ -30,9 +30,10 @@
       <span class="hamburger menu"><i class="fas fa-bars hamburger menu"></i></span>
     </button>
     <div class="navbar-buttons">
-      <button class="btn">
+      <button class="cartBtn">
         <i class="fas fa-shopping-cart menu">
           Cart
+          <p class="amount menu">0</p>
         </i>
       </button>
       <button class="btn">
@@ -40,6 +41,15 @@
           Account
         </i>
       </button>
+      <div class="cart">
+        <ul id="titlesOfProducts">Products in cart:
+        </ul>
+        <p id="amountOfProduct">Amount of product: </p>
+        <p id="subtotal">Subtotal:</p>
+        <p id="deliverFee">Delivery cost :</p>
+        <p id="totalPrice">Total price:</p>
+        <button>Order</button>
+      </div>
     </div>
   </nav>
 
@@ -105,15 +115,6 @@
       <div class="autors">
         <h1>Autors</h1>
         <div class="autors-list">
-          <!-- <a href="#Andrzej Sapkowski">Andrzej Sapkowski</a>
-          <a href="#Angus Watson">Angus Watson</a>
-          <a>Brandon Sanderson</a>
-          <a>John Ronald Reuel Tolkien</a>
-          <a>Lev Grossman</a>
-          <a>Paul Hoffman</a>
-          <a>Stephen King</a>
-          <a>Trudi Canavan</a>
-          <a>Wasilij Machanienko</a> -->
         </div>
       </div>
 
@@ -236,7 +237,6 @@
       </div>
     </div>
   </footer>
-  <script src="js/data.js"></script>
-  <script src="js/script.js"></script>
+  <script type="module" src="js/script.js"></script>
 </body>
 </html>

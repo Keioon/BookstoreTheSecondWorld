@@ -82,7 +82,7 @@ body {
         max-height: 250px;
         float: none;
         overflow-y: scroll;
-        @include scrollbars(10px, 8px, white, $borders-color, none);
+        @include scrollbars(10px, 8px, white, $borders-color, none, 0);
         background-color: $navbar-first-color;
         color: black;
         border: 0.3px solid black;
@@ -105,12 +105,12 @@ body {
   }
 
   .navbar-buttons {
-    width: 200px;
+    width: 240px;
     display: flex;
     border-radius: 5px;
     overflow: hidden;
 
-    .show {
+    .active {
       background-color: $navbar-btn-hover;
     }
 
@@ -128,9 +128,85 @@ body {
 
       i {
         border-color: $navbar-btn-background;
+        z-index: 4;
         width: 100%;
         line-height: 40px;
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+        align-items: center;
+
+        p {
+          display: block;
+          width: 30px;
+          height: 30px;
+          margin: 0 10px;
+          background-color: #ff6b6b;
+          border-radius: 50%;
+          font-size: 14px;
+          line-height: 30px;
+        }
+
+        p:hover {
+          //background-color: #ee5a6f;
+          background-color: #ff6b6b;
+        }
       }
+    }
+
+    .cart {
+      display: none;
+
+      ul {
+        text-align: left;
+        width: 100%;
+
+        li {
+          padding-left: 10px;
+          list-style-type: none;
+
+          i {
+            font-size: 12px;
+            padding: 0 3px;
+          }
+
+          i:hover {
+            cursor: pointer;
+          }
+        }
+      }
+
+      button {
+        max-height: 20%;
+        flex-basis: 80%;
+        flex-grow: 0;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #5a6268;;
+      }
+
+      p {
+        flex-basis: 100%;
+        align-self: center;
+        padding: 2px 0;
+      }
+    }
+
+    .cart.active {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px 10px;
+      border-radius: 0 0 5px 5px;
+      width: 240px;
+      top: 60px;
+      height: 200px;
+      overflow-y: auto;
+      position: fixed;
+      background-color: #343a40;
+      @include scrollbars(10px, 8px, white, $borders-color, none, 0);
     }
   }
 
@@ -207,7 +283,7 @@ body {
       border-radius: 30px 30px 0 0; 
       background-color: rgba(255, 255, 255, 0.75);
       border-bottom: 2px solid black;
-      @include scrollbars(8px, 40px, white, $borders-color, (1px solid $borders-color));
+      @include scrollbars(8px, 40px, white, $borders-color, (1px solid $borders-color), 0);
 
       form {
         margin: 5px auto;
@@ -245,7 +321,7 @@ body {
       display: flex;
       overflow: hidden;
       overflow-y: scroll;
-      @include scrollbars(8px, 40px, white, $borders-color, (1px solid $borders-color));
+      @include scrollbars(8px, 40px, white, $borders-color, (1px solid $borders-color), 0);
       border-radius: 0 0 30px 30px;
       background-color: rgba(255, 255, 255, 0.75);
       box-sizing: border-box;
@@ -297,7 +373,7 @@ body {
     height: 80%;
     transition: 0.5s;
     background-color: rgba(255, 255, 255, 0.9);
-    @include scrollbars(10px, 8px, white, $borders-color, none);
+    @include scrollbars(10px, 8px, white, $borders-color, none, 18px);
     
     h2 {
       width: 100%;
@@ -493,7 +569,7 @@ body {
         position: relative;
         overflow: hidden;
         overflow-y: auto;
-        @include scrollbars(8px, 100%, white, $borders-color, (1px solid $borders-color));
+        @include scrollbars(8px, 100%, white, $borders-color, (1px solid $borders-color), 0);
 
         a {
           padding: 15px 20px;
@@ -538,7 +614,7 @@ body {
         overflow: hidden;
         overflow-x: auto;
         display: flex;
-        @include scrollbars(10px, 8px, white, $borders-color, none);
+        @include scrollbars(10px, 8px, white, $borders-color, none, 0);
   
         .box {
           height: 100%;
@@ -885,6 +961,10 @@ footer {
     .navbar-buttons {
       display: none;
       order: 4;
+
+      .cart.active {
+        top: 220px;
+      }
     }
 
     .navbar-buttons.active {
