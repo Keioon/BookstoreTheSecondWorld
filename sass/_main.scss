@@ -969,9 +969,8 @@ footer {
 
     .navbar-buttons.active {
       display: flex;
-      width: 50%;
+      width: 55%;
       margin: auto;
-
     }
 
     .navbar-nav.active {
@@ -1141,6 +1140,14 @@ footer {
 }
 
 @media (max-width: 576px) {
+  .navbar {
+    .navbar-buttons.active {
+      display: flex;
+      width: 65%;
+      margin: auto;
+    }
+  }
+
   .products {
     .container {
       max-width: 540px;
