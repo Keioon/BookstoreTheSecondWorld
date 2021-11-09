@@ -1012,8 +1012,6 @@ dataSources.cart = {
   amountOfProduct: 0,
   price: 0,
   deliveryFee: 20,
-  // idOfProduct: [],
-  // titlesOfProduct: [],
   products: [
   ],
   totalPrice: 0,

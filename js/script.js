@@ -3,6 +3,7 @@ import dataSources from './data.js';
 
 const appStart = () => {
   const buttonListener = () => {
+    const booksAnchor = [...document.querySelectorAll('a[data-target*="books"]')];
     const dropdownMenu = document.querySelector('.dropdown-menu');
     const dropdown = document.querySelector('.dropdown');
     const accountBtn = document.querySelector(".fa-user-alt");
@@ -11,6 +12,29 @@ const appStart = () => {
     const modalBtn = document.querySelector('.modal');
     const modalRead = document.querySelector('.modal-read');
     let lastTarget = null;
+
+    booksAnchor.forEach(anchor => {
+      anchor.addEventListener('click', () => {
+        window.scrollTo({
+          top: document.querySelector('.books').offsetTop - 64,
+          behavior: 'smooth'
+        });
+      })
+    })
+
+    document.querySelector('li[data-target*="recommended"]').addEventListener('click', () => {
+      window.scrollTo({
+        top: document.querySelector('.second-image').offsetTop - 64,
+        behavior: 'smooth'
+      });
+    })
+
+    document.querySelector('li[data-target*="contact"]').addEventListener('click', () => {
+      window.scrollTo({
+        top: document.querySelector('.order-3').offsetTop - 64,
+        behavior: 'smooth'
+      });
+    })
   
     const blurToggler = () => {
       [...document.body.children].forEach(elem => {

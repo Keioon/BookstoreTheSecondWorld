@@ -15,16 +15,16 @@
       <li class="dropdown menu">
         <a class="navbar-links menu">Type</a>
         <div class="dropdown-menu menu">
-          <a href="#books" data-type="Cryminal">Cryminal</a>
-          <a href="#books" data-type="Detective">Detective</a>
-          <a href="#books" data-type="Fantasy">Fantasy</a>
-          <a href="#books" data-type="Horror">Horror</a>
-          <a href="#books" data-type="Romance">Romance</a>
-          <a href="#books" data-type="Sci-fi">Sci-fi</a>
+          <a data-target="books" data-type="Cryminal">Cryminal</a>
+          <a data-target="books" data-type="Detective">Detective</a>
+          <a data-target="books" data-type="Fantasy">Fantasy</a>
+          <a data-target="books" data-type="Horror">Horror</a>
+          <a data-target="books" data-type="Romance">Romance</a>
+          <a data-target="books" data-type="Sci-fi">Sci-fi</a>
         </div>
       </li>
-      <li class="navbar-link menu"><a href="#recommended" class="navbar-link menu">Recommended</a></li>
-      <li class="navbar-link menu"><a href="#contact" class="navbar-link menu">Contact</a></li>
+      <li class="navbar-link menu" data-target="recommended"><a class="navbar-link menu">Recommended</a></li>
+      <li class="navbar-link menu" data-target="contact"><a class="navbar-link menu">Contact</a></li>
     </ul>
     <button class="navbar-hamburger" data-target="#mobile-menu">
       <span class="hamburger menu"><i class="fas fa-bars hamburger menu"></i></span>
@@ -119,7 +119,7 @@
       </div>
 
       <div class="books">
-        <h1 name="books"><a name="books">Books</a></h1>
+        <h1>Books</h1>
         <div class="books-list">
         </div>        
       </div>
@@ -129,22 +129,20 @@
   <section class="products">
     <div class="container">
       <div class="wrap">
-        <a name="recommended">
-          <div class="row">
-            <div class="second-image">
-              <img src="images/nowicjuszka.jpg">
-              <!-- <button>Add to cart</button> -->
-            </div>
-            <div class="second-image">
-              <img src="images/wielkiMistrz.jpg">
-              <!-- <button>Add to cart</button> -->
-            </div>
-          </div>
-          <div class="horizontal-image">
-            <img src="images/wiedźminSaga.jpg">
+        <div class="row">
+          <div class="second-image">
+            <img src="images/nowicjuszka.jpg">
             <!-- <button>Add to cart</button> -->
           </div>
-        </a>
+          <div class="second-image">
+            <img src="images/wielkiMistrz.jpg">
+            <!-- <button>Add to cart</button> -->
+          </div>
+        </div>
+        <div class="horizontal-image">
+          <img src="images/wiedźminSaga.jpg">
+          <!-- <button>Add to cart</button> -->
+        </div>
       </div>
     </div>
   </section>
@@ -206,7 +204,7 @@
           </ul>
         </div>
         <div class="card order-3 order-3-2">  
-          <a name="contact">Contact us</a>
+          <a>Contact us</a>
           <p>2795 Cunningham Court</p>
           <p>Rochester Hills 48306</p>
           <p>Michigan</p>
