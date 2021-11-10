@@ -6,9 +6,9 @@ const appStart = () => {
     const booksAnchor = [...document.querySelectorAll('a[data-target*="books"]')];
     const dropdownMenu = document.querySelector('.dropdown-menu');
     const dropdown = document.querySelector('.dropdown');
-    const accountBtn = document.querySelector(".fa-user-alt");
+    const accountBtn = document.querySelector('.fa-user-alt');
     const modal = document.querySelector('.modal-wrap');
-    const modalCloseBtn = document.querySelector('.modalClose')
+    const modalCloseBtn = document.querySelector('.modalClose');
     const modalBtn = document.querySelector('.modal');
     const modalRead = document.querySelector('.modal-read');
     let lastTarget = null;
@@ -19,50 +19,50 @@ const appStart = () => {
           top: document.querySelector('.books').offsetTop - 64,
           behavior: 'smooth'
         });
-      })
-    })
+      });
+    });
 
     document.querySelector('li[data-target*="recommended"]').addEventListener('click', () => {
       window.scrollTo({
         top: document.querySelector('.second-image').offsetTop - 64,
         behavior: 'smooth'
       });
-    })
+    });
 
     document.querySelector('li[data-target*="contact"]').addEventListener('click', () => {
       window.scrollTo({
         top: document.querySelector('.order-3').offsetTop - 64,
         behavior: 'smooth'
       });
-    })
+    });
   
     const blurToggler = () => {
       [...document.body.children].forEach(elem => {
-        if(elem.classList != ""  || elem.localName == "footer") {
+        if(elem.classList != ''  || elem.localName == 'footer') {
           elem.classList.toggle('blur');
         }
-      })
+      });
       modal.classList.remove('blur');
-    }
+    };
     
     accountBtn.addEventListener('click', () => {
       blurToggler();
       modal.classList.add('active');
       modalBtn.classList.add('active');
-    })
+    });
   
     modalCloseBtn.addEventListener('click', () => {
       blurToggler();
       modal.classList.remove('active');
       modalBtn.classList.remove('active');
       modalRead.classList.remove('active');
-    })
+    });
   
     const showRemover = (list) => {
       for(let li of list) {
         li.classList.remove('show');
       }
-    }
+    };
   
     document.body.addEventListener('click', function(e){
       if(!e.target.classList.contains('menu')){
@@ -77,7 +77,7 @@ const appStart = () => {
           blurToggler();
           modal.classList.add('active');
           modalRead.classList.add('active');
-          const id =  e.target.getAttribute("data-id");
+          const id =  e.target.getAttribute('data-id');
           const title = dataSources.booksList[id].title;
           const discribe = dataSources.booksList[id].description;
           const amount = dataSources.booksList[id].amount;
@@ -90,7 +90,7 @@ const appStart = () => {
           if(dataSources.booksList[id].amount == 0) {
             document.querySelector('.add-button').classList.add('lack');
           } else {
-            document.querySelector('.add-button').classList.remove('lack')
+            document.querySelector('.add-button').classList.remove('lack');
           }
           document.querySelector('.stock').innerHTML = `In stock: ${amount}`;
           document.querySelector('.price').innerHTML = `${price} PLN`;
@@ -99,13 +99,13 @@ const appStart = () => {
           booksList.forEach(box => {
             box.classList.remove('hide');
             lastTarget = null;
-          })
-        } else if(e.target.getAttribute("data-autor")) {
+          });
+        } else if(e.target.getAttribute('data-autor')) {
           e.target.preventDefault;
   
           booksList.filter(box => {
-            const autor = box.getAttribute("data-autor");
-            if(autor.includes(`${e.target.getAttribute("data-autor")}`)) {
+            const autor = box.getAttribute('data-autor');
+            if(autor.includes(`${e.target.getAttribute('data-autor')}`)) {
               box.classList.remove('hide');
             } else {
               box.classList.add('hide');
@@ -113,11 +113,11 @@ const appStart = () => {
           });
   
           lastTarget = e.target;
-        } else if(e.target.getAttribute("data-type")) {
+        } else if(e.target.getAttribute('data-type')) {
           e.target.preventDefault;
           booksList.filter(box => {
-            const type = box.getAttribute("data-type");
-            if(type.includes(`${e.target.getAttribute("data-type")}`)) {
+            const type = box.getAttribute('data-type');
+            if(type.includes(`${e.target.getAttribute('data-type')}`)) {
               //autor.includes(`${e.target.getAttribute("data-autor")}`)
               //e.target.getAttribute("data-autor");
               box.classList.remove('hide');
@@ -155,8 +155,8 @@ const appStart = () => {
         } 
       
       }
-    })
-  }
+    });
+  };
   
   const sliderHandler = () => {
     let current = null;
@@ -177,7 +177,7 @@ const appStart = () => {
         next = current + 1;
         prev = current - 1;
       }
-    }
+    };
   
     const changeSlideOnNext = () => {
       didSlideEnd = false;
@@ -186,7 +186,7 @@ const appStart = () => {
         if(elem.classList.contains('current')) {
           current = id;
         }
-      })
+      });
   
       currentSlideCheck(slideList.length, current);
   
@@ -202,7 +202,7 @@ const appStart = () => {
         slideList[prev].classList.remove('hide');
         didSlideEnd = true;
       }, 600);
-    }
+    };
   
     let regularSlideChange = null;
   
@@ -214,7 +214,7 @@ const appStart = () => {
           if(elem.classList.contains('current')) {
             current = id;
           }
-        })
+        });
         
         currentSlideCheck(slideList.length, current);
   
@@ -233,7 +233,7 @@ const appStart = () => {
         clearInterval(regularSlideChange);
         regularSlideChange = setInterval(changeSlideOnNext, 5000);
       } 
-    })
+    });
   
     rightBtn.addEventListener('click', () => {
       if(didSlideEnd){
@@ -241,21 +241,21 @@ const appStart = () => {
         clearInterval(regularSlideChange);
         regularSlideChange = setInterval(changeSlideOnNext, 5000);
       }
-    })
+    });
   
     regularSlideChange = setInterval(changeSlideOnNext, 5000);
-  }
+  };
   
   const autorsListCreate = autors => {
     const autorsList = document.querySelector('.autors-list');
   
     autors.forEach(autor => {
-      const aElem = document.createElement("a");
+      const aElem = document.createElement('a');
       aElem.innerHTML = autor;
-      aElem.setAttribute("data-autor", autor);
+      aElem.setAttribute('data-autor', autor);
       autorsList.appendChild(aElem);
-    })
-  }
+    });
+  };
   
   const booksListCreate = books => {
     const booksList = document.querySelector('.books-list');
@@ -270,6 +270,7 @@ const appStart = () => {
       cardImage.classList.add('card-image');
       const img = document.createElement('img');
       img.src = elem.img;
+      img.alt = elem.alt;
       cardImage.appendChild(img);
       box.appendChild(cardImage);
   
@@ -284,26 +285,26 @@ const appStart = () => {
       boxButtons.classList.add('box-buttons');
       const addBtn = document.createElement('button');
       if(elem.amount == 0) {
-        addBtn.classList.add('lack')
+        addBtn.classList.add('lack');
       } 
-      addBtn.classList.add('add-button')
-      addBtn.setAttribute('data-id', elem.id)
+      addBtn.classList.add('add-button');
+      addBtn.setAttribute('data-id', elem.id);
   
-      addBtn.innerHTML = "Add to Cart";
+      addBtn.innerHTML = 'Add to Cart';
       boxButtons.appendChild(addBtn);
   
       const readBtn = document.createElement('button');
       readBtn.classList.add('read-button');
-      readBtn.setAttribute('data-id', elem.id)
-      readBtn.innerHTML = "Read more";
+      readBtn.setAttribute('data-id', elem.id);
+      readBtn.innerHTML = 'Read more';
   
       boxButtons.appendChild(readBtn);
       textDiv.appendChild(boxButtons);
       
       box.appendChild(textDiv);
       booksList.appendChild(box);
-    })
-  }
+    });
+  };
   
   const cartAktualization = (elem, type) => {
     const addButtonList = document.querySelectorAll('.add-button');
@@ -316,19 +317,19 @@ const appStart = () => {
     document.getElementById('totalPrice').innerHTML = `Total price: ${dataSources.cart.totalPrice.toFixed(2)}`;
   
     const titlesOfProduct = document.getElementById('titlesOfProducts');
-    if(type == "add") {
+    if(type == 'add') {
       const newLi = document.createElement('li');
       newLi.setAttribute('data-id', elem);
       newLi.innerHTML = `${dataSources.booksList[elem].title}<i class="fas fa-backspace"></i>`;
       titlesOfProduct.appendChild(newLi);
     } else {
-      titlesOfProduct.innerHTML = "Product in cart:";
+      titlesOfProduct.innerHTML = 'Product in cart:';
       dataSources.cart.products.forEach(product => {
         const newLi = document.createElement('li');
         newLi.setAttribute('data-id', product.id);
         newLi.innerHTML = `${dataSources.booksList[product.id].title}<i class="fas fa-backspace"></i>`;
         titlesOfProduct.appendChild(newLi);
-      })
+      });
     }
   
     if(dataSources.booksList[elem].amount == 0) {
@@ -336,15 +337,15 @@ const appStart = () => {
         if(btn.getAttribute('data-id') == elem) {
           btn.classList.add('lack');
         }
-      })
+      });
     } else {
       addButtonList.forEach(btn => {
         if(btn.getAttribute('data-id') == elem) {
           btn.classList.remove('lack');
         }
-      })
+      });
     }
-  }
+  };
 
   const deliveryCost = () => {
     if(dataSources.cart.amountOfProduct == 0) {
@@ -357,15 +358,15 @@ const appStart = () => {
       dataSources.cart.deliveryFee = 0;
       dataSources.cart.totalPrice = dataSources.cart.price;
     }
-  }
+  };
   
   const addToCart = id => {
-    let alreadyInCart = false
+    let alreadyInCart = false;
     dataSources.cart.products.forEach(elem => {
       if(elem.id == id) {
         alreadyInCart = true;
       }
-    })
+    });
   
     if(!alreadyInCart) { 
       dataSources.booksList[id].amount -= 1;
@@ -381,7 +382,7 @@ const appStart = () => {
     } else {
       alert('This book is already in cart');
     }
-  }
+  };
   
   const removeFromCart = title => {
     let idInBooksList = null;
@@ -391,7 +392,7 @@ const appStart = () => {
         dataSources.cart.products.splice(elemId, 1);
         dataSources.cart.price -= elem.price;
       }
-    })
+    });
   
     dataSources.cart.amountOfProduct -= 1;
     dataSources.booksList[idInBooksList].amount += 1;
@@ -402,11 +403,11 @@ const appStart = () => {
   
     deliveryCost();
     cartAktualization(idInBooksList, 'remove');
-  }
+  };
   
   autorsListCreate(dataSources.autorsList);
   booksListCreate(dataSources.booksList);
   sliderHandler();
   buttonListener();
-}
+};
 appStart();

@@ -131,12 +131,10 @@ body {
         width: 100%;
         line-height: 40px;
         display: flex;
-        flex-grow: 1;
         justify-content: center;
         align-items: center;
 
-        p {
-          display: block;
+        .amount {
           width: 30px;
           height: 30px;
           margin: 0 10px;
@@ -146,7 +144,7 @@ body {
           line-height: 30px;
         }
 
-        p:hover {
+        i:hover {
           //background-color: #ee5a6f;
           background-color: #ff6b6b;
         }
@@ -222,6 +220,7 @@ body {
     
     span {
       flex-grow: 1;
+      font-size: 0;
       height: 100%;
       display: flex;
       align-items: center;
@@ -503,13 +502,15 @@ body {
       transform: translateY(-50%);
       background-color: transparent;
       border: none;
+    }
 
-      i {
-        color: white;
-        font-size: 24px;
-        opacity: 0.4;
-        transition: 0.5s linear;
-      }
+    .left {
+      left: 5%;
+      color: white;
+      font-size: 30px;
+      opacity: 0.4;
+      transition: 0.5s linear;
+      font-weight: bold;
 
       :hover {
         opacity: 1;
@@ -517,12 +518,18 @@ body {
       }
     }
 
-    .left {
-      left: 5%;
-    }
-
     .right {
       right: 5%;
+      color: white;
+      font-size: 30px;
+      opacity: 0.4;
+      transition: 0.5s linear;
+      font-weight: bold;
+    }
+
+    .left:hover,.right:hover {
+      opacity: 1;
+      cursor: pointer;
     }
 
   }
