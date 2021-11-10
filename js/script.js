@@ -345,6 +345,19 @@ const appStart = () => {
       })
     }
   }
+
+  const deliveryCost = () => {
+    if(dataSources.cart.amountOfProduct == 0) {
+      dataSources.cart.totalPrice = 0;
+      dataSources.cart.deliveryFee = 0;
+    } else if(dataSources.cart.amountOfProduct < 3) {
+      dataSources.cart.deliveryFee = 20;
+      dataSources.cart.totalPrice = dataSources.cart.price + dataSources.cart.deliveryFee;
+    } else {
+      dataSources.cart.deliveryFee = 0;
+      dataSources.cart.totalPrice = dataSources.cart.price;
+    }
+  }
   
   const addToCart = id => {
     let alreadyInCart = false
@@ -357,19 +370,13 @@ const appStart = () => {
     if(!alreadyInCart) { 
       dataSources.booksList[id].amount -= 1;
       dataSources.cart.amountOfProduct += 1;
-      dataSources.cart.price += dataSources.booksList[id].price;
       const title = dataSources.booksList[id].title;
       const price = dataSources.booksList[id].price;
       const product = {id, title, price};
+      dataSources.cart.price += product.price;
       dataSources.cart.products.push(product);
   
-      if(dataSources.cart.amountOfProduct >=3) {
-        dataSources.cart.totalPrice = dataSources.cart.price;
-        dataSources.cart.deliveryFee = 0;
-      } else {
-        dataSources.cart.totalPrice = dataSources.cart.price + dataSources.cart.deliveryFee;
-      }
-  
+      deliveryCost();
       cartAktualization(id, 'add');
     } else {
       alert('This book is already in cart');
@@ -388,14 +395,12 @@ const appStart = () => {
   
     dataSources.cart.amountOfProduct -= 1;
     dataSources.booksList[idInBooksList].amount += 1;
-  
-    if(dataSources.cart.amountOfProduct < 3) {
-      dataSources.cart.deliveryFee = 20;
-      dataSources.cart.totalPrice = dataSources.cart.price + dataSources.cart.deliveryFee;
-    } else {
-      dataSources.cart.totalPrice = dataSources.cart.price;
+
+    if(dataSources.cart.amountOfProduct == 0) {
+      dataSources.cart.price = 0;
     }
-    
+  
+    deliveryCost();
     cartAktualization(idInBooksList, 'remove');
   }
   

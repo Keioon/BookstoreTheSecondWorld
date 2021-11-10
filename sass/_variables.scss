@@ -71,6 +71,16 @@ $borders-color: #d3d3d3;
   }
 }
 
+@mixin smoothShow($display-type, $position-type, $opacity, $width, $height, $z-index, $transition) {
+  transition: $transition;
+  opacity: $opacity;
+  position: $position-type;
+  display: $display-type;
+  width: $width;
+  height: $height;
+  z-index: $z-index;
+}
+
 @mixin scrollbars($width, $height, $background-color, $arrow-color, $border, $marginTopBottm) {
   &::-webkit-scrollbar {
     width: $width;
