@@ -101,8 +101,7 @@ const appStart = () => {
             lastTarget = null;
           });
         } else if(e.target.getAttribute('data-autor')) {
-          e.target.preventDefault;
-  
+          
           booksList.filter(box => {
             const autor = box.getAttribute('data-autor');
             if(autor.includes(`${e.target.getAttribute('data-autor')}`)) {
@@ -114,19 +113,15 @@ const appStart = () => {
   
           lastTarget = e.target;
         } else if(e.target.getAttribute('data-type')) {
-          e.target.preventDefault;
           booksList.filter(box => {
             const type = box.getAttribute('data-type');
             if(type.includes(`${e.target.getAttribute('data-type')}`)) {
-              //autor.includes(`${e.target.getAttribute("data-autor")}`)
-              //e.target.getAttribute("data-autor");
               box.classList.remove('hide');
             } else {
               box.classList.add('hide');
             }
           });
         } else if((e.target.classList.contains('add-button')) & (!e.target.classList.contains('lack'))) {
-          // console.log(e.target);
           addToCart(e.target.getAttribute('data-id'));
         } else if(e.target.classList.contains('fa-backspace')) {
           removeFromCart(e.target.parentNode.innerText);
@@ -139,6 +134,7 @@ const appStart = () => {
           dropdownMenu.classList.toggle('show');
           showRemover(showedList);
         } else if(e.target.classList.contains('navbar-link')) {
+          console.log(e.target);
           e.target.classList.toggle('show');
           showRemover(showedList);
         } else if(e.target.classList.contains('hamburger')) {
@@ -153,7 +149,6 @@ const appStart = () => {
           e.target.parentNode.classList.toggle('show');
           showRemover(showedList);
         } 
-      
       }
     });
   };
