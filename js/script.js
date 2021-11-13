@@ -11,6 +11,7 @@ const appStart = () => {
     const modalCloseBtn = document.querySelector('.modalClose');
     const modalBtn = document.querySelector('.modal');
     const modalRead = document.querySelector('.modal-read');
+    const cart = document.querySelector('.cart');
     let lastTarget = null;
 
     booksAnchor.forEach(anchor => {
@@ -132,6 +133,7 @@ const appStart = () => {
         if(e.target.classList.contains('navbar-links') || e.target.classList.contains('dropdown')) {
           dropdown.classList.toggle('show');
           dropdownMenu.classList.toggle('show');
+          cart.classList.remove('active');
           showRemover(showedList);
         } else if(e.target.classList.contains('navbar-link')) {
           console.log(e.target);
@@ -143,7 +145,7 @@ const appStart = () => {
           showRemover(showedList);
         } else if((e.target.classList.contains('fa-shopping-cart')) || (e.target.classList.contains('amount'))) {
           document.querySelector('.cartBtn').classList.toggle('active');
-          document.querySelector('.cart').classList.toggle('active');
+          cart.classList.toggle('active');
           showRemover(showedList);
         } else if(e.target.classList.contains('fa-user-alt')) {
           e.target.parentNode.classList.toggle('show');
