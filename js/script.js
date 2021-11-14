@@ -2,6 +2,13 @@
 import dataSources from './data.js';
 
 const appStart = () => {
+
+  const templates = {
+    autorsList: Handlebars.compile(document.querySelector('#template-autors-list').innerHTML),
+    booksList: Handlebars.compile(document.querySelector('#template-books-list').innerHTML),
+    titlesProductInCart: Handlebars.compile(document.querySelector('#template-titles-list').innerHTML)
+  };
+
   const buttonListener = () => {
     const booksAnchor = [...document.querySelectorAll('a[data-target*="books"]')];
     const dropdownMenu = document.querySelector('.dropdown-menu');
@@ -245,62 +252,14 @@ const appStart = () => {
   
   const autorsListCreate = autors => {
     const autorsList = document.querySelector('.autors-list');
-  
-    autors.forEach(autor => {
-      const aElem = document.createElement('a');
-      aElem.innerHTML = autor;
-      aElem.setAttribute('data-autor', autor);
-      autorsList.appendChild(aElem);
-    });
+    const generatedHTMLAutors = templates.autorsList({autors});
+    autorsList.insertAdjacentHTML('beforeend', generatedHTMLAutors);
   };
   
   const booksListCreate = books => {
     const booksList = document.querySelector('.books-list');
-    books.forEach(elem => {
-      const box = document.createElement('div');
-      box.classList.add('box'); 
-      box.setAttribute('data-id', elem.id);
-      box.setAttribute('data-type', elem.type);
-      box.setAttribute('data-autor', elem.autor);
-  
-      const cardImage = document.createElement('div');
-      cardImage.classList.add('card-image');
-      const img = document.createElement('img');
-      img.src = elem.img;
-      img.alt = elem.alt;
-      cardImage.appendChild(img);
-      box.appendChild(cardImage);
-  
-      const textDiv = document.createElement('div');
-      textDiv.classList.add('text');
-  
-      const title = document.createElement('h2');
-      title.innerHTML = elem.title;
-      textDiv.appendChild(title);
-  
-      const boxButtons = document.createElement('div');
-      boxButtons.classList.add('box-buttons');
-      const addBtn = document.createElement('button');
-      if(elem.amount == 0) {
-        addBtn.classList.add('lack');
-      } 
-      addBtn.classList.add('add-button');
-      addBtn.setAttribute('data-id', elem.id);
-  
-      addBtn.innerHTML = 'Add to Cart';
-      boxButtons.appendChild(addBtn);
-  
-      const readBtn = document.createElement('button');
-      readBtn.classList.add('read-button');
-      readBtn.setAttribute('data-id', elem.id);
-      readBtn.innerHTML = 'Read more';
-  
-      boxButtons.appendChild(readBtn);
-      textDiv.appendChild(boxButtons);
-      
-      box.appendChild(textDiv);
-      booksList.appendChild(box);
-    });
+    const generatedHTMLBooks = templates.booksList({books});
+    booksList.insertAdjacentHTML('beforeend', generatedHTMLBooks);
   };
   
   const cartAktualization = (elem, type) => {
@@ -315,17 +274,15 @@ const appStart = () => {
   
     const titlesOfProduct = document.getElementById('titlesOfProducts');
     if(type == 'add') {
-      const newLi = document.createElement('li');
-      newLi.setAttribute('data-id', elem);
-      newLi.innerHTML = `${dataSources.booksList[elem].title}<i class="fas fa-backspace"></i>`;
-      titlesOfProduct.appendChild(newLi);
+      const titleData = {id: elem, title: dataSources.booksList[elem].title};
+      const generatedHTMLTitles = templates.titlesProductInCart(titleData);
+      titlesOfProduct.insertAdjacentHTML('beforeend', generatedHTMLTitles);
     } else {
       titlesOfProduct.innerHTML = 'Product in cart:';
       dataSources.cart.products.forEach(product => {
-        const newLi = document.createElement('li');
-        newLi.setAttribute('data-id', product.id);
-        newLi.innerHTML = `${dataSources.booksList[product.id].title}<i class="fas fa-backspace"></i>`;
-        titlesOfProduct.appendChild(newLi);
+        const titleData = {id: product.id, title: dataSources.booksList[product.id].title};
+        const generatedHTMLTitles = templates.titlesProductInCart(titleData);
+        titlesOfProduct.insertAdjacentHTML('beforeend', generatedHTMLTitles);
       });
     }
   
@@ -384,13 +341,13 @@ const appStart = () => {
   const removeFromCart = title => {
     let idInBooksList = null;
     dataSources.cart.products.forEach((elem, elemId) => {
+
       if(title == elem.title) {
         idInBooksList = elem.id;
         dataSources.cart.products.splice(elemId, 1);
         dataSources.cart.price -= elem.price;
       }
     });
-  
     dataSources.cart.amountOfProduct -= 1;
     dataSources.booksList[idInBooksList].amount += 1;
 

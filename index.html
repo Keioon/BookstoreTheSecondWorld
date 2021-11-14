@@ -223,6 +223,43 @@
       </div>
     </div>
   </footer>
+
+  <script id="template-autors-list" type="text/x-handlebars-template">
+    {{#each autors}}
+    <a data-autor="{{ @this }}">{{ @this }}</a>
+    {{/each}}
+  </script>
+  <script id="template-books-list" type="text/x-handlebars-template">
+    {{#each books}}
+    <div class="box" data-id="{{ @key }}" data-type="{{ type }}" data-autor="{{{ autor }}}">
+      <div class="card-image">
+        <img src="{{ img }}" alt="{{ alt }}">
+      </div>
+      <div class="text">
+        <h2>{{ title }}</h2>
+        <div class="box-buttons">
+          {{#if amount}}
+          <button class="add-button" data-id="{{ id }}">
+            Add to Cart
+          </button>
+          {{~^~}}
+          <button class="add-button lack" data-id="{{ id }}">
+            Add to Cart
+          </button>
+          {{/if}}
+          <button class="read-button" data-id="{{ id }}">
+            Read more
+          </button>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </script>
+
+  <script id="template-titles-list" type="text/x-handlebars-template">
+    <li data-id="{{ id }}">{{ title }}<i class="fas fa-backspace"></i></li>
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
   <script src="js/script.js" type="module"></script>
 </body>
 </html>
