@@ -5,34 +5,47 @@
   "main": "index.js",
   "scripts": {
     "init-project": "npm install && npm-run-all init:*",
-    "init:dirs": "mkdirp sass css vendor images js",
-    "init:files": "touch README.md index.html sass/style.scss js/script.js",
+    "init:dirs": "mkdirp dist src/sass src/css src/vendor src/images src/js",
+    "init:files": "touch README.md src/index.html src/sass/style.scss src/js/script.js",
     "init:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore",
+    "init:gitignore:custom": "echo \"dist\" >> .gitignore",
     "test": "npm-run-all test:*",
-    "test:html": "html-validate *.html",
-    "test:js": "eslint js/",
+    "test:html": "globstar nu-html-checker dist/*.html",
+    "test:js": "eslint src/js/",
     "build": "npm-run-all build:* test",
-    "build:sass": "node-sass --output-style compact -o css sass",
-    "build:autoprefixer": "postcss css/*.css --use autoprefixer -d css",
+    "build:clean": "mkdirp dist && rm -r dist && mkdirp dist",
+    "build:copy": "copyfiles -a -u 1 -e \"**/sass/**/*\" -e \"**/.gitkeep\" \"src/**/*\" dist",
+    "build:sass": "node-sass --output-style compact -o dist/css src/sass",
+    "build:autoprefixer": "postcss dist/css/*.css --use autoprefixer -d dist/css",
     "build-dev": "npm-run-all build-dev:sass build:autoprefixer",
-    "build-dev:sass": "node-sass --output-style expanded --source-map true -o css sass",
-    "watch": "npm-run-all build:* build-dev -p watch:*",
-    "watch:browsersync": "browser-sync start --server --files \"css/*.css\" \"sass/*.scss\" \"*.html\" \"js/*.js\"",
-    "watch:sassprefixer": "onchange sass/*.scss -- npm run build-dev"
+    "build-dev:sass": "node-sass --output-style expanded --source-map true -o dist/css src/sass",
+    "server": "json-server --port 3131 --no-cors --delay 250 --watch dist/db/app.json",
+    "watch": "npm-run-all build build-dev -p watch:* server",
+    "watch:browsersync": "browser-sync start --server dist --files \"dist/**/*\" --ignore \"dist/db/**/*\"",
+    "watch:sassprefixer": "onchange \"src/sass/**/*.scss\" -- npm run build-dev",
+    "watch:copy": "onchange -e \"**/sass/**/*\" -e \"**/.gitkeep\" \"src/**/*\" -- copyfiles -a -u 1 {{changed}} dist"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.17.0"
+  },
   "devDependencies": {
     "autoprefixer": "^10.2.4",
     "browser-sync": "^2.27.5",
+    "copyfiles": "^2.1.0",
     "eslint": "^8.2.0",
+    "globstar": "^1.0.0",
     "html-validate": "^5.4.1",
     "mkdirp": "^1.0.4",
     "node-sass": "^6.0.1",
     "npm-run-all": "^4.1.5",
+    "nu-html-checker": "^0.1.0",
     "onchange": "^7.1.0",
     "postcss": "^8.2.6",
-    "postcss-cli": "^8.3.1"
+    "postcss-cli": "^8.3.1",
+    "stylelint": "^9.10.1",
+    "stylelint-scss": "^3.5.4"
   }
 }
