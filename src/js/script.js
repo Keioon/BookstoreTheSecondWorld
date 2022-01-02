@@ -1,8 +1,113 @@
 'use strict';
-import dataSources from './data.js';
-import {classesToAdd, select, templates} from './settings.js';
+import {classesToAdd, select, settings, templates} from './settings.js';
 
 const appStart = () => {
+  const data = {};
+  data.cart = {  
+    amountOfProduct: 0,
+    price: 0,
+    deliveryFee: 20,
+    products: [],
+    totalPrice: 0,
+  };
+
+  const fetchAutors = () => {
+    const url = settings.db.url + '/' + settings.db.autorsList;
+    fetch(url)
+      .then(function(rawResponse){
+        return rawResponse.json();
+      })
+      .then(function(parsedResponse){
+        data.autorsList = parsedResponse;
+        autorsListCreate(data.autorsList);
+      });
+  };
+
+  const fetchBooks = () => {
+    const url = settings.db.url + '/' + settings.db.booksList;
+    fetch(url)
+      .then(function(rawResponse){
+        return rawResponse.json();
+      })
+      .then(function(parsedResponse){
+        data.booksList = parsedResponse;
+        booksListCreate(data.booksList);
+      });
+  };
+
+  const sendToData = (toUpdate, i) => {
+    const url = settings.db.url + '/' + settings.db.booksList + `/${toUpdate[i].id}`;
+    fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(toUpdate[i])
+    })
+      .then(response => {
+        response.json();
+        i += 1;
+        if(i < toUpdate.length){
+          sendToData(toUpdate, i);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    booksListCreate(data.booksList);
+  };
+
+  const booksAmountUpdate = (titles) => {
+    const toUpdate = [];
+    let pairedNumber = 0;
+    for(let i = 0; i<data.booksList.length; i++) {
+      for(let j = 0; j<titles.length; j++) {
+        if(pairedNumber != titles.length) {
+          if(titles[j] == data.booksList[i].title) {
+            data.booksList[i].amount --;
+            pairedNumber += 1;
+            toUpdate.push(data.booksList[i]);
+          }
+        } else {
+          break;
+        }
+      }
+    }
+    sendToData(toUpdate, 0);
+  };
+
+  const sendOrder = () => {
+    const toRemove = [];
+    if(data.cart.amountOfProduct > 0) {
+      const url = settings.db.url + '/' + settings.db.orders;
+      const order = data.cart;
+
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(order)
+      })
+        .then(response => {
+          response.json();
+          booksAmountUpdate(toRemove);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+      data.cart.products.forEach(book => {
+        toRemove.push(book.title);
+      });
+
+      toRemove.forEach(title => {
+        removeFromCart(title);
+      });
+    } else {
+      console.log('Nothing inside cart to add');
+    }
+  };
+
   const buttonListener = () => {
     const booksAnchor = [...document.querySelectorAll(select.anchors.booksList)];
     const dropdownMenu = document.querySelector(select.items.dropdownMenu);
@@ -13,6 +118,8 @@ const appStart = () => {
     const modalBtn = document.querySelector(select.modals.modal);
     const modalRead = document.querySelector(select.modals.modalRead);
     const cart = document.querySelector(select.items.cart);
+    const sendBtn = document.querySelector('button[type="submit"]');
+
     let lastTarget = null;
 
     booksAnchor.forEach(anchor => {
@@ -46,6 +153,10 @@ const appStart = () => {
       });
       modal.classList.remove(classesToAdd.blur);
     };
+
+    sendBtn.addEventListener('click', () => {
+      sendOrder();
+    });
     
     accountBtn.addEventListener('click', () => {
       blurToggler();
@@ -80,19 +191,16 @@ const appStart = () => {
           modal.classList.add(classesToAdd.active);
           modalRead.classList.add(classesToAdd.active);
           const id =  e.target.getAttribute('data-id');
-          const title = dataSources.booksList[id].title;
-          const discribe = dataSources.booksList[id].description;
-          const amount = dataSources.booksList[id].amount;
-          const price = dataSources.booksList[id].price;
+          const title = data.booksList[id].title;
+          const discribe = data.booksList[id].description;
+          const amount = data.booksList[id].amount;
+          const price = data.booksList[id].price;
   
           document.querySelector(select.modals.title).innerHTML = title;
           document.querySelector(select.modals.describe).innerHTML = discribe;
-          console.log(document.querySelector(select.buttons.add).setAttribute('data-id', id));
           document.querySelector(select.buttons.add).setAttribute('data-id', id);
-  
-          // console.log('i');
 
-          if(dataSources.booksList[id].amount == 0) {
+          if(data.booksList[id].amount == 0) {
             document.querySelector(select.buttons.add).classList.add(classesToAdd.lack);
           } else {
             document.querySelector(select.buttons.add).classList.remove(classesToAdd.lack);
@@ -255,35 +363,36 @@ const appStart = () => {
   
   const booksListCreate = books => {
     const booksList = document.querySelector(select.list.books);
+    booksList.innerHTML = '';
     const generatedHTMLBooks = templates.booksList({books});
     booksList.insertAdjacentHTML('beforeend', generatedHTMLBooks);
   };
   
   const cartAktualization = (elem, type) => {
     const addButtonList = document.querySelectorAll(select.buttons.add);
-    const amountProduct = dataSources.cart.amountOfProduct;
+    const amountProduct = data.cart.amountOfProduct;
     document.querySelector(select.cart.amount).innerHTML = amountProduct;
     document.getElementById(select.cart.product).innerHTML = `Amount of product: ${amountProduct}`;
-    document.querySelector(select.cart.stock).innerHTML = `In stock: ${dataSources.booksList[elem].amount}`;
-    document.getElementById(select.cart.subtotal).innerHTML = `Subtotal: ${dataSources.cart.price.toFixed(2)}`;
-    document.getElementById(select.cart.delivery).innerHTML = `Deliverdy cost: ${dataSources.cart.deliveryFee}`;
-    document.getElementById(select.cart.total).innerHTML = `Total price: ${dataSources.cart.totalPrice.toFixed(2)}`;
+    document.querySelector(select.cart.stock).innerHTML = `In stock: ${data.booksList[elem].amount}`;
+    document.getElementById(select.cart.subtotal).innerHTML = `Subtotal: ${data.cart.price.toFixed(2)}`;
+    document.getElementById(select.cart.delivery).innerHTML = `Deliverdy cost: ${data.cart.deliveryFee}`;
+    document.getElementById(select.cart.total).innerHTML = `Total price: ${data.cart.totalPrice.toFixed(2)}`;
   
     const titlesOfProduct = document.getElementById(select.cart.productList);
     if(type == 'add') {
-      const titleData = {id: elem, title: dataSources.booksList[elem].title};
+      const titleData = {id: elem, title: data.booksList[elem].title};
       const generatedHTMLTitles = templates.titlesProductInCart(titleData);
       titlesOfProduct.insertAdjacentHTML('beforeend', generatedHTMLTitles);
     } else {
       titlesOfProduct.innerHTML = 'Product in cart:';
-      dataSources.cart.products.forEach(product => {
-        const titleData = {id: product.id, title: dataSources.booksList[product.id].title};
+      data.cart.products.forEach(product => {
+        const titleData = {id: product.id, title: data.booksList[product.id].title};
         const generatedHTMLTitles = templates.titlesProductInCart(titleData);
         titlesOfProduct.insertAdjacentHTML('beforeend', generatedHTMLTitles);
       });
     }
   
-    if(dataSources.booksList[elem].amount == 0) {
+    if(data.booksList[elem].amount == 0) {
       addButtonList.forEach(btn => {
         if(btn.getAttribute('data-id') == elem) {
           btn.classList.add(classesToAdd.lack);
@@ -299,66 +408,66 @@ const appStart = () => {
   };
 
   const deliveryCost = () => {
-    if(dataSources.cart.amountOfProduct == 0) {
-      dataSources.cart.totalPrice = 0;
-      dataSources.cart.deliveryFee = 0;
-    } else if(dataSources.cart.amountOfProduct < 3) {
-      dataSources.cart.deliveryFee = 20;
-      dataSources.cart.totalPrice = dataSources.cart.price + dataSources.cart.deliveryFee;
+    if(data.cart.amountOfProduct == 0) {
+      data.cart.totalPrice = 0;
+      data.cart.deliveryFee = 0;
+    } else if(data.cart.amountOfProduct < 3) {
+      data.cart.deliveryFee = 20;
+      data.cart.totalPrice = data.cart.price + data.cart.deliveryFee;
     } else {
-      dataSources.cart.deliveryFee = 0;
-      dataSources.cart.totalPrice = dataSources.cart.price;
+      data.cart.deliveryFee = 0;
+      data.cart.totalPrice = data.cart.price;
     }
   };
   
   const addToCart = id => {
     let alreadyInCart = false;
-    dataSources.cart.products.forEach(elem => {
+
+    data.cart.products.forEach(elem => {
       if(elem.id == id) {
         alreadyInCart = true;
       }
     });
   
     if(!alreadyInCart) { 
-      dataSources.booksList[id].amount -= 1;
-      dataSources.cart.amountOfProduct += 1;
-      const title = dataSources.booksList[id].title;
-      const price = dataSources.booksList[id].price;
+      data.booksList[id].amount -= 1;
+      data.cart.amountOfProduct += 1;
+      const title = data.booksList[id].title;
+      const price = data.booksList[id].price;
       const product = {id, title, price};
-      dataSources.cart.price += product.price;
-      dataSources.cart.products.push(product);
+      data.cart.price += product.price;
+      data.cart.products.push(product);
   
       deliveryCost();
       cartAktualization(id, 'add');
     } else {
       alert('This book is already in cart');
     }
-    console.log(dataSources.cart);
   };
   
   const removeFromCart = title => {
     let idInBooksList = null;
-    dataSources.cart.products.forEach((elem, elemId) => {
+    data.cart.products.forEach((elem, elemId) => {
 
       if(title == elem.title) {
         idInBooksList = elem.id;
-        dataSources.cart.products.splice(elemId, 1);
-        dataSources.cart.price -= elem.price;
+        data.cart.products.splice(elemId, 1);
+        data.cart.price -= elem.price;
       }
     });
-    dataSources.cart.amountOfProduct -= 1;
-    dataSources.booksList[idInBooksList].amount += 1;
+    data.cart.amountOfProduct -= 1;
+    data.booksList[idInBooksList].amount += 1;
 
-    if(dataSources.cart.amountOfProduct == 0) {
-      dataSources.cart.price = 0;
+    if(data.cart.amountOfProduct == 0) {
+      data.cart.price = 0;
     }
   
     deliveryCost();
     cartAktualization(idInBooksList, 'remove');
   };
-  
-  autorsListCreate(dataSources.autorsList);
-  booksListCreate(dataSources.booksList);
+
+  fetchAutors();
+  fetchBooks();
   sliderHandler();
   buttonListener();
 };

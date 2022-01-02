@@ -76,6 +76,8 @@ export const settings = {
     url: '//localhost:3131',
     booksList: 'booksList',
     autorsList: 'autorsList',
+    cart: 'cart',
+    orders: 'orders'
   },
 };
 
