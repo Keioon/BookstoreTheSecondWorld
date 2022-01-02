@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BookstoreTheSecondWorld</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://kit.fontawesome.com/69c0a89c25.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <nav class="navbar" >
+    <a class="navbar-title">BookstoreTheSecondWorld</a>
+    <ul class="navbar-nav">
+      <li class="dropdown menu">
+        <a class="navbar-links menu">Type</a>
+        <div class="dropdown-menu menu">
+          <a data-target="books" data-type="Cryminal">Cryminal</a>
+          <a data-target="books" data-type="Detective">Detective</a>
+          <a data-target="books" data-type="Fantasy">Fantasy</a>
+          <a data-target="books" data-type="Horror">Horror</a>
+          <a data-target="books" data-type="Romance">Romance</a>
+          <a data-target="books" data-type="Sci-fi">Sci-fi</a>
+        </div>
+      </li>
+      <li class="navbar-link menu" data-target="recommended"><a class="navbar-link menu">Recommended</a></li>
+      <li class="navbar-link menu" data-target="contact"><a class="navbar-link menu">Contact</a></li>
+    </ul>
+    <button class="navbar-hamburger" data-target="#mobile-menu" type="button">
+      <span class="hamburger menu">.<i class="fas fa-bars hamburger menu"></i></span>
+    </button>
+    <div class="navbar-buttons">
+      <button class="cartBtn" type="button">
+        <i class="fas fa-shopping-cart menu">
+          Cart
+          <i class="amount menu">0</i>
+        </i>
+      </button>
+      <button class="btn" type="button">
+        <i class="fas fa-user-alt menu">
+          Account
+        </i>
+      </button>
+      <div class="cart">
+        <ul id="titlesOfProducts">Products in cart:
+        </ul>
+        <p id="amountOfProduct">Amount of product: </p>
+        <p id="subtotal">Subtotal:</p>
+        <p id="deliverFee">Delivery cost :</p>
+        <p id="totalPrice">Total price:</p>
+        <button type="submit">Order</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="modal-wrap">
+    <div class="modal">
+      <div class="login">
+        <form>
+          <input type="text" placeholder="Enter Login" required>
+          <input type="password" placeholder="Enter Password" required>
+          <button type="submit">Login</button>
+          <label>
+            <input type="checkbox" checked name="remember"> Remember me
+          </label>
+        </form>
+      </div>
+      <div class="register">
+        <form>
+          <input type="text" placeholder="Your Name" required>
+          <input type="text" placeholder="Username" required>
+          <input type="text" placeholder="Login Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <input type="password" placeholder="Password" required>
+          <input type="password" placeholder="Confirm Password" required>
+          <button type="submit">Register</button>
+        </form>
+      </div>
+    </div>
+    <div class="modal-read">
+      <h2>title</h2>
+      <p></p>
+      <div class="row">
+        <button class="add-button" data-id="" type="button">Add to cart
+        </button>
+        <p class="stock">In stock: X</p>
+        <p class="price">xx,xx PLN</p>
+      </div>
+    </div>
+    <span class="modalClose">X</span>
+  </div>
+
+  <div class="main-slider">
+    <div class="slider-item current">
+      <img src="images/bookShelves.jpg" alt="bookShelves">
+      <p>The largest selection</p>
+    </div>
+    <div class="slider-item next">
+      <img src="images/pileOfBooks.jpg" alt="pileOfBooks">
+      <p>Low prices</p>
+    </div>
+    <div class="slider-item prev">
+      <img src="images/magicOfReading.jpg" alt="magicOfReading">
+      <p>Amazing stories</p>
+    </div>
+    <div class="slider-buttons">
+      <button class="left" type="button">&lt;</button>
+      <button class="right" type="button">&gt;</button>
+    </div>
+  </div>
+  <section class="products">
+    <div class="container">
+      <div class="autors">
+        <h1>Autors</h1>
+        <div class="autors-list">
+        </div>
+      </div>
+      <div class="books">
+        <h1>Books</h1>
+        <div class="books-list">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="products">
+    <div class="container">
+      <div class="wrap">
+        <div class="row">
+          <div class="second-image">
+            <img src="images/nowicjuszka.jpg" alt="nowicjuszka"><!-- <button>Add to cart</button> -->
+          </div>
+          <div class="second-image">
+            <img src="images/wielkiMistrz.jpg" alt="wielkiMistrz"><!-- <button>Add to cart</button> -->
+          </div>
+        </div>
+        <div class="horizontal-image">
+          <img src="images/wiedźminSaga.jpg" alt="wiedźminSaga"><!-- <button>Add to cart</button> -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="support">
+    <div class="container">
+      <div class="row">
+        <div class="card">
+          <div class="col-first">
+            <i class="fas fa-truck"></i>
+          </div>
+          <div class="col-second">
+            <h3>Free shipping</h3>
+            <p>If you buy three or more of our products, we will deliver them for free</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="col-first">
+            <i class="fas fa-money-bill-wave"></i>
+          </div>
+          <div class="col-second">
+            <h3>7-day refund</h3>
+            <p>If the product does not meet your interests, it can be returned up to 7 days</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="col-first">
+            <i class="fas fa-life-ring"></i>
+          </div>
+          <div class="col-second">
+            <h3>24/7 support</h3>
+            <p>Our consumer support department works 24 hour and 7 days in week</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="contact">
+    <div class="container">
+      <div class="row">
+        <div class="card order-1 order-1-3">
+          <a>Newsletter</a>
+          <p>If you want to receive notifications</p>
+          <input type="email" placeholder="Enter email">
+          <p class="small">We'll never share your email with anyone else.</p>
+          <button class="submit-button" type="submit">Submit</button>
+        </div>
+        <div class="card order-2 order-2-1">
+          <a>The Second World</a>
+          <p>Visit us also on.</p>
+          <ul>
+            <li><i class="fab fa-facebook-f"></i></li>
+            <li><i class="fab fa-instagram"></i></li>
+            <li><i class="fab fa-twitter"></i></li>
+            <li><i class="fab fa-youtube"></i></li>
+          </ul>
+        </div>
+        <div class="card order-3 order-3-2">
+          <a>Contact us</a>
+          <p>2795 Cunningham Court</p>
+          <p>Rochester Hills 48306</p>
+          <p>Michigan</p>
+          <p><a href="#">secondworld@gmail.com</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-left">
+          <ul>
+            <li class="show">© The Second World Ltd.</li>
+            <li class="hide">Created by Krystian Urbaniak © krystian.g.urbaniak@gmail.com</li>
+          </ul>
+        </div>
+        <div class="col-right">
+          <ul>
+            <li><a>About</a></li>
+            <li><a>Delivery</a></li>
+            <li><a>Returns</a></li>
+            <li><a>Privacy policy</a></li>
+            <li><a>Terms and conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script id="template-autors-list" type="text/x-handlebars-template">
+    {{#each autors}}
+    <a data-autor="{{ @this }}">{{ @this }}</a>
+    {{/each}}
+  </script>
+  <script id="template-books-list" type="text/x-handlebars-template">
+    {{#each books}}
+    <div class="box" data-id="{{ @key }}" data-type="{{ type }}" data-autor="{{{ autor }}}">
+      <div class="card-image">
+        <img src="{{ img }}" alt="{{ alt }}">
+      </div>
+      <div class="text">
+        <h2>{{ title }}</h2>
+        <div class="box-buttons">
+          {{#if amount}}
+          <button class="add-button" data-id="{{ id }}">
+            Add to Cart
+          </button>
+          {{~^~}}
+          <button class="add-button lack" data-id="{{ id }}">
+            Add to Cart
+          </button>
+          {{/if}}
+          <button class="read-button" data-id="{{ id }}">
+            Read more
+          </button>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </script>
+
+  <script id="template-titles-list" type="text/x-handlebars-template">
+    <li data-id="{{ id }}">{{ title }}<i class="fas fa-backspace"></i></li>
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+  <script src="js/script.js" type="module"></script>
+</body>
+</html>
