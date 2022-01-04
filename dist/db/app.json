@@ -1,5 +1,5 @@
 {
-  "booksList" : [
+  "booksList": [
     {
       "id": 0,
       "title": "Droga Królów",
@@ -18,7 +18,7 @@
       "type": "Fantasy",
       "img": "images/słowaŚwiatłości.jpg",
       "description": "Doskonała kontynuacja 'Drogi królów'<br>\n\n    Świetliści Rycerze muszą znów powstać\n    W końcu wypowiedziano starożytne przysięgi, spreny powracają. Ludzie szukają tego, co zostało utracone. Być może ta misja ich zniszczy.\n    <br>\n    Wiatrowy zagubił się w strzaskanej krainie i balansuje na granicy między zemstą a honorem. Tkaczka Światła, którą powoli pochłania przeszłość, poszukuje kłamstwa, którym musi się stać. Kowal Więzi, zrodzony z krwi i śmierci, teraz próbuje odbudować to, co zostało zniszczone. Badaczka, od której zależą losy dwóch ludów, zostaje zmuszona do dokonania wyboru między powolną śmiercią a straszliwą zdradą wszystkiego, w co wierzy.\n    <br>\n    Najwyższy czas, by się przebudzili, nadchodzi bowiem Wieczna Burza.\n    ",
-      "amount": 1,
+      "amount": 0,
       "alt": "Słowa Światłości",
       "price": 45.99
     },
@@ -29,7 +29,7 @@
       "type": "Fantasy",
       "img": "images/dawcaPrzysięgiCI.jpg",
       "description": "W „Dawcy Przysięgi“, trzecim tomie bestsellerowego Archiwum Burzowego Światła, ludzkość musi stawił czoło nowemu Spustoszeniu i powrotowi Pustkowców - wroga, którego liczebność jest równie wielka, jak pragnienie zemsty.<br>\n\n    Alethyjskie armie pod dowództwem Dalinara Kholina odniosły chwilowe zwycięstwo, jednak cena była straszliwa: Parshendi przywołali gwałtowną Wielką Burzę, która teraz niszczy świat, a jej przejście uświadamia niegdyś spokojnym i potulnym parshmenom prawdziwą grozę ich trwającego wiele tysiącleci uwięzienia. Podczas desperackiej misji, by ostrzec rodzinę przed nowym zagrożeniem, Kaladin Burzą Błogosławiony musi pogodzić się ze świadomością, że ich gniew może być całkowicie uzasadniony.<br>\n    \n    Wysoko w górach pond burzami, w wieży Urithiru, Shallan Davar bada cuda starożytnej twierdzy Świetlistych Rycerzy i odkrywa mroczne tajemnice kryjące się w jej głębinach. Dalinar zaś uświadamia sobie, że jego święta misja zjednoczenia ojczystego Alethkaru miała zbyt ograniczony zasięg. Jeśli wszystkim narodom Rosharu nie uda się zapomnieć o krwawej przeszłości Dalinara, by się zjednoczyć - i o ile samemu Dalinarowi nie uda się stawić czoła tej przeszłości - nawet powrót Świetlistych Rycerzy nie zapobiegnie końcowi cywilizacji.",
-      "amount": 2,
+      "amount": 0,
       "alt": "Dawca Przysięgi I",
       "price": 34.99
     },
@@ -41,7 +41,7 @@
       "img": "images/dawcaPrzysięgiCII.jpg",
       "description": "Przebudzeni parshendi – pieśniarze – pod wodzą służących Odium Stopionych wydają się niepowstrzymani. Wieczna Burza nieubłaganie powraca, za każdym razem sprowadzając śmierć i zniszczenie na ludzkie osady. Dalinar Kholin, udręczony powracającymi wspomnieniami przeszłości i nieżyjącej żony, nie szczędzi wysiłków, by zbudować koalicję ludzkich królestw, odkrywając przy tym swoje moce Kowala Więzi. Jednakże Odium ma wiele sług i wygląda na to, że jest przygotowany na każdą możliwość, a Świetlistym Rycerzom zagraża również tajemnica, która wcześniej doprowadziła do Odstępstwa ich starożytnych poprzedników.<br>\n\n    Elhokar, Adolin, Shallan i Kaladin docierają do Kholinaru i odkrywają, że choć miasto jeszcze nie upadło, ich misja może się okazać o wiele trudniejsza, niż się spodziewali. Ludzie szepczą o mrocznej sile, która opanowała pałac i królową Aesudan, po ulicach zaś wędrują wyznawcy dziwacznego Kultu Chwil. A jedynym, co chroni miasto przed upadkiem, jest Straż Muru i jej tajemniczy dowódca, marszałek Lazur.<br>\n    \n    Tymczasem ostatnia z Parshendich, Venli, zaczyna pojmować, jakie skutki przyniosła jej decyzja, by odnaleźć starożytnych bogów pieśniarzy, i jaki los czeka pieśniarzy pod władzą Odium.",
       "alt": "Dawca Przysięgi II",
-      "amount": 10,
+      "amount": 9,
       "price": 34.99
     },
     {
@@ -52,7 +52,7 @@
       "img": "images/rytmWojnyCI.jpg",
       "description": "Po utworzeniu koalicji ludzkich monarchów stawiających opór wrogiej inwazji, Dalinar Kholin i jego Świetliści Rycerze przez rok prowadzili przeciągającą się, brutalną wojnę. Żadna ze stron nie zyskała przewagi, a nad każdym strategicznym posunięciem wisi cień zdrady przebiegłego Taravangiana.<br>\n\n    Teraz, gdy nowe wynalazki uczonych Navani Kholin zaczynają zmieniać oblicze wojny, wróg przygotowuje odważną i niebezpieczną operację. Następujący później wyścig zbrojeń może rzucić wyzwanie samemu sednu ideałów Świetlistych, a być może wyjawić również tajemnice starożytnej wieży, która niegdyś była sercem ich potęgi.",
       "alt": "Rytm Wojny I",
-      "amount": 10,
+      "amount": 9,
       "price": 39.99
     },
     {
@@ -63,7 +63,7 @@
       "img": "images/rytmWojnyCII.jpg",
       "description": "W nowej powieści z cyklu 'Archiwum Burzowego Światła', pod tytułem 'Rytm wojny. Archiwum Burzowego Światła. Tom 4. Część 2' Kaladin i Navani toczą zacięty bój o ocalenie Rodzeństwa. Navani, aby dopiąć swego celu, decyduje się podjąć niebezpieczną grę ze Stopioną, nazywaną ongiś Panią Bólu.<br>\n\n    W Emulu zaś wojska koalicji toczą zaciekłą wojnę. Jasnah próbuje umocnić swoją pozycję władczyni Alethkaru, a Dalinar z kolei pragnie zrozumieć swoje moce. A Adolin i Shallan mają do wypełnienia w Cieniomorzu pewne niebezpieczne zadanie. Kto wygra, a kto przegra? Rytmy wojny rozbrzmiały, i nic nie może ich już uciszyć.",
       "alt": "Rytm Wojny II",
-      "amount": 10,
+      "amount": 9,
       "price": 39.99
     },
     {
@@ -826,8 +826,7 @@
       "price": 24.99
     }
   ],
-
-  "autorsList" : [
+  "autorsList": [
     "Artur Conan Doyle",
     "Andrzej Sapkowski",
     "Angus Watson",
@@ -854,8 +853,57 @@
     "Wasilij Machanienko",
     "Yves Grevet"
   ],
-
-  "cart" : [
+  "orders": [
+    {
+      "amountOfProduct": 2,
+      "price": 80.98,
+      "deliveryFee": 20,
+      "products": [
+        {
+          "id": "1",
+          "title": "Słowa Światłości",
+          "price": 45.99
+        },
+        {
+          "id": "2",
+          "title": "Dawca Przysięgi I",
+          "price": 34.99
+        }
+      ],
+      "totalPrice": 100.98,
+      "id": 1
+    },
+    {
+      "amountOfProduct": 4,
+      "price": 149.96,
+      "deliveryFee": 0,
+      "products": [
+        {
+          "id": "2",
+          "title": "Dawca Przysięgi I",
+          "price": 34.99
+        },
+        {
+          "id": "3",
+          "title": "Dawca Przysięgi II",
+          "price": 34.99
+        },
+        {
+          "id": "4",
+          "title": "Rytm Wojny I",
+          "price": 39.99
+        },
+        {
+          "id": "5",
+          "title": "Rytm Wojny II",
+          "price": 39.99
+        }
+      ],
+      "totalPrice": 149.96,
+      "id": 2
+    }
+  ],
+  "cart": [
     {
       "amountOfProduct": 0,
       "price": 0,
