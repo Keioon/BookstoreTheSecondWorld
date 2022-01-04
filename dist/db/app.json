@@ -1,5 +1,5 @@
 {
-  "booksList": [
+  "booksList" : [
     {
       "id": 0,
       "title": "Droga Królów",
@@ -18,7 +18,7 @@
       "type": "Fantasy",
       "img": "images/słowaŚwiatłości.jpg",
       "description": "Doskonała kontynuacja 'Drogi królów'<br>\n\n    Świetliści Rycerze muszą znów powstać\n    W końcu wypowiedziano starożytne przysięgi, spreny powracają. Ludzie szukają tego, co zostało utracone. Być może ta misja ich zniszczy.\n    <br>\n    Wiatrowy zagubił się w strzaskanej krainie i balansuje na granicy między zemstą a honorem. Tkaczka Światła, którą powoli pochłania przeszłość, poszukuje kłamstwa, którym musi się stać. Kowal Więzi, zrodzony z krwi i śmierci, teraz próbuje odbudować to, co zostało zniszczone. Badaczka, od której zależą losy dwóch ludów, zostaje zmuszona do dokonania wyboru między powolną śmiercią a straszliwą zdradą wszystkiego, w co wierzy.\n    <br>\n    Najwyższy czas, by się przebudzili, nadchodzi bowiem Wieczna Burza.\n    ",
-      "amount": 0,
+      "amount": 1,
       "alt": "Słowa Światłości",
       "price": 45.99
     },
@@ -29,7 +29,7 @@
       "type": "Fantasy",
       "img": "images/dawcaPrzysięgiCI.jpg",
       "description": "W „Dawcy Przysięgi“, trzecim tomie bestsellerowego Archiwum Burzowego Światła, ludzkość musi stawił czoło nowemu Spustoszeniu i powrotowi Pustkowców - wroga, którego liczebność jest równie wielka, jak pragnienie zemsty.<br>\n\n    Alethyjskie armie pod dowództwem Dalinara Kholina odniosły chwilowe zwycięstwo, jednak cena była straszliwa: Parshendi przywołali gwałtowną Wielką Burzę, która teraz niszczy świat, a jej przejście uświadamia niegdyś spokojnym i potulnym parshmenom prawdziwą grozę ich trwającego wiele tysiącleci uwięzienia. Podczas desperackiej misji, by ostrzec rodzinę przed nowym zagrożeniem, Kaladin Burzą Błogosławiony musi pogodzić się ze świadomością, że ich gniew może być całkowicie uzasadniony.<br>\n    \n    Wysoko w górach pond burzami, w wieży Urithiru, Shallan Davar bada cuda starożytnej twierdzy Świetlistych Rycerzy i odkrywa mroczne tajemnice kryjące się w jej głębinach. Dalinar zaś uświadamia sobie, że jego święta misja zjednoczenia ojczystego Alethkaru miała zbyt ograniczony zasięg. Jeśli wszystkim narodom Rosharu nie uda się zapomnieć o krwawej przeszłości Dalinara, by się zjednoczyć - i o ile samemu Dalinarowi nie uda się stawić czoła tej przeszłości - nawet powrót Świetlistych Rycerzy nie zapobiegnie końcowi cywilizacji.",
-      "amount": 0,
+      "amount": 2,
       "alt": "Dawca Przysięgi I",
       "price": 34.99
     },
@@ -41,7 +41,7 @@
       "img": "images/dawcaPrzysięgiCII.jpg",
       "description": "Przebudzeni parshendi – pieśniarze – pod wodzą służących Odium Stopionych wydają się niepowstrzymani. Wieczna Burza nieubłaganie powraca, za każdym razem sprowadzając śmierć i zniszczenie na ludzkie osady. Dalinar Kholin, udręczony powracającymi wspomnieniami przeszłości i nieżyjącej żony, nie szczędzi wysiłków, by zbudować koalicję ludzkich królestw, odkrywając przy tym swoje moce Kowala Więzi. Jednakże Odium ma wiele sług i wygląda na to, że jest przygotowany na każdą możliwość, a Świetlistym Rycerzom zagraża również tajemnica, która wcześniej doprowadziła do Odstępstwa ich starożytnych poprzedników.<br>\n\n    Elhokar, Adolin, Shallan i Kaladin docierają do Kholinaru i odkrywają, że choć miasto jeszcze nie upadło, ich misja może się okazać o wiele trudniejsza, niż się spodziewali. Ludzie szepczą o mrocznej sile, która opanowała pałac i królową Aesudan, po ulicach zaś wędrują wyznawcy dziwacznego Kultu Chwil. A jedynym, co chroni miasto przed upadkiem, jest Straż Muru i jej tajemniczy dowódca, marszałek Lazur.<br>\n    \n    Tymczasem ostatnia z Parshendich, Venli, zaczyna pojmować, jakie skutki przyniosła jej decyzja, by odnaleźć starożytnych bogów pieśniarzy, i jaki los czeka pieśniarzy pod władzą Odium.",
       "alt": "Dawca Przysięgi II",
-      "amount": 7,
+      "amount": 10,
       "price": 34.99
     },
     {
@@ -52,7 +52,7 @@
       "img": "images/rytmWojnyCI.jpg",
       "description": "Po utworzeniu koalicji ludzkich monarchów stawiających opór wrogiej inwazji, Dalinar Kholin i jego Świetliści Rycerze przez rok prowadzili przeciągającą się, brutalną wojnę. Żadna ze stron nie zyskała przewagi, a nad każdym strategicznym posunięciem wisi cień zdrady przebiegłego Taravangiana.<br>\n\n    Teraz, gdy nowe wynalazki uczonych Navani Kholin zaczynają zmieniać oblicze wojny, wróg przygotowuje odważną i niebezpieczną operację. Następujący później wyścig zbrojeń może rzucić wyzwanie samemu sednu ideałów Świetlistych, a być może wyjawić również tajemnice starożytnej wieży, która niegdyś była sercem ich potęgi.",
       "alt": "Rytm Wojny I",
-      "amount": 9,
+      "amount": 10,
       "price": 39.99
     },
     {
@@ -789,7 +789,7 @@
       "img": "images/u4Jules.jpg",
       "description": "JEDEN WIRUS, JEDNA HISTORIA, 4 AUTORÓW, 4 TOMY SERII<br>\n\n    Doskonały przekład nietypowej serii stworzonej przez cenionych we Francji autorów książek dla młodzieży.<br>\n    \n    \n    Akcja wszystkich czterech powieści wchodzących w jej skład toczy się współcześnie, od 1 listopada do 24 grudnia. Na świecie wybucha epidemia wywołana przez niezwykle groźnego wirusa U4, na którego nie ma remedium. W ciągu miesiąca wirus wyniszcza niemal całą ludzkość. Epidemię w zagadkowy sposób przeżywają tylko młodzi ludzie między 15 a 18 rokiem życia. I to właśnie z perspektywy czworga spośród ocalałych nastolatków – dwóch dziewcząt Koridwen i Stéphane oraz dwóch chłopców Yannisa i Jules’a – czytelnik ogląda postapokaliptyczny świat. Ich historie rozgrywają się równolegle, a opowieści przenikają się w taki sposób, że nawet najuważniejszy czytelnik ani przez moment nie ma wrażenia, że „już kiedyś to czytał”.<br>\n    \n    Każdy z tomów stanowi oddzielną całość, ale wszystkie wzajemnie się dopełniają.Jules, podobnie jak pozostali tytułowi bohaterowie serii „U4”, jest ekspertem w grze komputerowej Warriors of Time. Ostatni przed apokalipsą komunikat Mistrza Gry Khronosa zwoływał ekspertów do Paryża i obiecywał im możliwość przeniesienia się w czasie i uratowania świata przed epidemią.",
       "alt": "U4 .Jules",
-      "amount": 9,
+      "amount": 10,
       "price": 24.99
     },
     {
@@ -826,7 +826,8 @@
       "price": 24.99
     }
   ],
-  "autorsList": [
+
+  "autorsList" : [
     "Artur Conan Doyle",
     "Andrzej Sapkowski",
     "Angus Watson",
@@ -853,7 +854,8 @@
     "Wasilij Machanienko",
     "Yves Grevet"
   ],
-  "cart": [
+
+  "cart" : [
     {
       "amountOfProduct": 0,
       "price": 0,
